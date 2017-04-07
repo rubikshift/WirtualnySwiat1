@@ -6,5 +6,6 @@ class SosnowskyHogweed :
 public:
 	SosnowskyHogweed(World& WorldToLive);
 	virtual ~SosnowskyHogweed();
+	int Draw() override;
 };
 

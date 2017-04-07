@@ -6,5 +6,6 @@ class Wolf :
 public:
 	Wolf(World& WorldToLive);
 	virtual ~Wolf();
+	int Draw() override;
 };
 

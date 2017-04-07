@@ -14,6 +14,6 @@ Antelope::~Antelope()
 int Antelope::Draw()
 {
 	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY] = ANTELOPE;
+	Map[this->Position.GetX()][this->Position.GetY()] = ANTELOPE;
 	return 0;
 }

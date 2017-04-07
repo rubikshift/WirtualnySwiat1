@@ -15,6 +15,7 @@
 #include "Turtle.h"
 #include "Wolf.h"
 #include "World.h"
+#include "WorldField.h"
 
 int main()
 {

@@ -1,10 +1,13 @@
 #pragma once
-#include "Organism.h"
 #include "WorldField.h"
+#include "OrganismQueue.h"
+
+class OrganismQueue;
 
 class World
 {
 public:
+	World();
 	World(int m, int n);
 	~World();
 
@@ -14,6 +17,7 @@ public:
 
 private:
 	WorldField** Map;
+	OrganismQueue* Organisms;
 	int m, n;
 };
 

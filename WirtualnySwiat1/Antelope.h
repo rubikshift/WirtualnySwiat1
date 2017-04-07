@@ -6,6 +6,6 @@ class Antelope :
 public:
 	Antelope(World& WorldToLive);
 	virtual ~Antelope();
-	int Draw();
+	int Draw() override;
 };
 

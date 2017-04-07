@@ -2,9 +2,12 @@
 #include "World.h"
 #include "Point.h"
 
+class World;
+
 class Organism
 {
 public:
+	Organism();
 	Organism(int Strength, int Initative, World& WorldToLive);
 	virtual ~Organism();
 
@@ -16,6 +19,6 @@ protected:
 	int Initative;
 	int Age;
 	Point Position;
-	World &WorldToLive;
+	World& WorldToLive;
 };
 

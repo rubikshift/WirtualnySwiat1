@@ -6,5 +6,6 @@ class Human :
 public:
 	Human(World& WorldToLive);
 	virtual ~Human();
+	int Draw() override;
 };
 

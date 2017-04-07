@@ -2,6 +2,10 @@
 
 
 
+World::World()
+{
+}
+
 World::World(int m, int n)
 {
 	this->m = m;

@@ -6,5 +6,6 @@ class SowThistle :
 public:
 	SowThistle(World& WorldToLive);
 	virtual ~SowThistle();
+	int Draw() override;
 };
 

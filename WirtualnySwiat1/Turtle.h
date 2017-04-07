@@ -6,5 +6,6 @@ class Turtle :
 public:
 	Turtle(World& WorldToLive);
 	virtual ~Turtle();
+	int Draw() override;
 };
 

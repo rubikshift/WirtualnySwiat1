@@ -147,7 +147,9 @@
     <ClInclude Include="Grass.h" />
     <ClInclude Include="Guarana.h" />
     <ClInclude Include="Human.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Organism.h" />
+    <ClInclude Include="OrganismQueue.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Sheep.h" />
@@ -168,7 +170,9 @@
     <ClCompile Include="Guarana.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Organism.cpp" />
+    <ClCompile Include="OrganismQueue.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Sheep.cpp" />
@@ -177,9 +181,6 @@
     <ClCompile Include="Turtle.cpp" />
     <ClCompile Include="Wolf.cpp" />
     <ClCompile Include="World.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="WirtualnySwiat1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

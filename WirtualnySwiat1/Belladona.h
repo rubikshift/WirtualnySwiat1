@@ -6,5 +6,6 @@ class Belladona :
 public:
 	Belladona(World& WorldToLive);
 	virtual ~Belladona();
+	int Draw() override;
 };
 

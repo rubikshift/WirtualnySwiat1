@@ -6,5 +6,6 @@ class Guarana :
 public:
 	Guarana(World& WorldToLive);
 	virtual ~Guarana();
+	int Draw() override;
 };
 

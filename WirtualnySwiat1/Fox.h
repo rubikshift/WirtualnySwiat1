@@ -6,5 +6,6 @@ class Fox :
 public:
 	Fox(World& WorldToLive);
 	virtual ~Fox();
+	int Draw() override;
 };
 

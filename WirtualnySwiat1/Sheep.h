@@ -6,5 +6,6 @@ class Sheep :
 public:
 	Sheep(World& WorldToLive);
 	virtual ~Sheep();
+	int Draw() override;
 };
 

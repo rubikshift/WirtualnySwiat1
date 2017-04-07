@@ -6,5 +6,6 @@ class Grass :
 public:
 	Grass(World& WorldToLive);
 	virtual ~Grass();
+	int Draw() override;
 };
 
