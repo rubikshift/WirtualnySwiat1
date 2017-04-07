@@ -2,7 +2,7 @@
 
 
 
-SosnowskyHogweed::SosnowskyHogweed()
+SosnowskyHogweed::SosnowskyHogweed(World& WorldToLive) : Plant(10, WorldToLive)
 {
 }
 

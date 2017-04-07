@@ -1,0 +1,17 @@
+#pragma once
+enum WorldField
+{
+	EMPTY,
+	ANTELOPE,
+	BELLADONA,
+	CYBER_SHEEP,
+	FOX,
+	GRASS,
+	GUARANA,
+	HUMAN,
+	SHEEP,
+	SOSNOWSKY_HOGWEED,
+	SOW_THISTLE,
+	TURTLE,
+	WOLF
+};

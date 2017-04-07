@@ -4,7 +4,7 @@ class Fox :
 	public Animal
 {
 public:
-	Fox();
-	~Fox();
+	Fox(World& WorldToLive);
+	virtual ~Fox();
 };
 

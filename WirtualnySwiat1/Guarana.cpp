@@ -2,7 +2,7 @@
 
 
 
-Guarana::Guarana()
+Guarana::Guarana(World& WorldToLive) : Plant(0, WorldToLive)
 {
 }
 

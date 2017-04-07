@@ -2,7 +2,7 @@
 
 
 
-Belladona::Belladona()
+Belladona::Belladona(World& WorldToLive) : Plant(9, WorldToLive)
 {
 }
 

@@ -2,7 +2,7 @@
 
 
 
-Grass::Grass()
+Grass::Grass(World& WorldToLive) : Plant(0, WorldToLive)
 {
 }
 

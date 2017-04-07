@@ -2,7 +2,7 @@
 
 
 
-Wolf::Wolf()
+Wolf::Wolf(World& WorldToLive) : Animal(9, 5, WorldToLive)
 {
 }
 

@@ -4,7 +4,7 @@ class Wolf :
 	public Animal
 {
 public:
-	Wolf();
-	~Wolf();
+	Wolf(World& WorldToLive);
+	virtual ~Wolf();
 };
 

@@ -2,7 +2,7 @@
 
 
 
-Sheep::Sheep()
+Sheep::Sheep(World& WorldToLive) : Animal(4, 4, WorldToLive)
 {
 }
 

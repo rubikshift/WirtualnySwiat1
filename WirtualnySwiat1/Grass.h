@@ -4,7 +4,7 @@ class Grass :
 	public Plant
 {
 public:
-	Grass();
-	~Grass();
+	Grass(World& WorldToLive);
+	virtual ~Grass();
 };
 

@@ -4,7 +4,8 @@ class Antelope :
 	public Animal
 {
 public:
-	Antelope();
-	~Antelope();
+	Antelope(World& WorldToLive);
+	virtual ~Antelope();
+	int Draw();
 };
 

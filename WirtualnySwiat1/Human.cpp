@@ -2,7 +2,7 @@
 
 
 
-Human::Human()
+Human::Human(World& WorldToLive) : Animal(5, 4, WorldToLive)
 {
 }
 

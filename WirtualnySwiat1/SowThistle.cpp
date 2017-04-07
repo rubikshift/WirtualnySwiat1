@@ -2,7 +2,7 @@
 
 
 
-SowThistle::SowThistle()
+SowThistle::SowThistle(World& WorldToLive) : Plant(0, WorldToLive)
 {
 }
 

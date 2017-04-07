@@ -4,7 +4,7 @@ class Sheep :
 	public Animal
 {
 public:
-	Sheep();
-	~Sheep();
+	Sheep(World& WorldToLive);
+	virtual ~Sheep();
 };
 

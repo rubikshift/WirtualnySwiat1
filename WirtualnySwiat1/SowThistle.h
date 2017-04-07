@@ -4,7 +4,7 @@ class SowThistle :
 	public Plant
 {
 public:
-	SowThistle();
-	~SowThistle();
+	SowThistle(World& WorldToLive);
+	virtual ~SowThistle();
 };
 

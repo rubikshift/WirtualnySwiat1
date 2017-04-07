@@ -2,10 +2,12 @@
 
 
 
-Organism::Organism()
+Organism::Organism(int Strength, int Initative, World& WorldToLive)
 {
-	Strength = 0;
-	Initative = 0;
+	this->Strength = Strength;
+	this->Initative = Initative;
+	Age = 0;
+	this->WorldToLive = WorldToLive;
 }
 
 

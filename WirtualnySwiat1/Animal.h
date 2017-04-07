@@ -4,7 +4,7 @@ class Animal :
 	public Organism
 {
 public:
-	Animal();
-	~Animal();
+	Animal(int Strength, int Initative, World& WorldToLive);
+	virtual ~Animal();
 };
 

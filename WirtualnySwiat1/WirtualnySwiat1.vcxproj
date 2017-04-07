@@ -156,6 +156,7 @@
     <ClInclude Include="Turtle.h" />
     <ClInclude Include="Wolf.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="WorldField.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animal.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="Guarana.cpp" />
     <ClCompile Include="Human.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Organism.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="Point.cpp" />

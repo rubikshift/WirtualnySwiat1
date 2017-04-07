@@ -4,7 +4,7 @@ class Turtle :
 	public Animal
 {
 public:
-	Turtle();
-	~Turtle();
+	Turtle(World& WorldToLive);
+	virtual ~Turtle();
 };
 

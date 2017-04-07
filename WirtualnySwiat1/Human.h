@@ -4,7 +4,7 @@ class Human :
 	public Animal
 {
 public:
-	Human();
-	~Human();
+	Human(World& WorldToLive);
+	virtual ~Human();
 };
 

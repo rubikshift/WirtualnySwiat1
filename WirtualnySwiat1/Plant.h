@@ -4,7 +4,7 @@ class Plant :
 	public Organism
 {
 public:
-	Plant();
-	~Plant();
+	Plant(int Strength, World& WorldToLive);
+	virtual ~Plant();
 };
 

@@ -4,7 +4,7 @@ class SosnowskyHogweed :
 	public Plant
 {
 public:
-	SosnowskyHogweed();
-	~SosnowskyHogweed();
+	SosnowskyHogweed(World& WorldToLive);
+	virtual ~SosnowskyHogweed();
 };
 

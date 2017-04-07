@@ -4,7 +4,7 @@ class Belladona :
 	public Plant
 {
 public:
-	Belladona();
-	~Belladona();
+	Belladona(World& WorldToLive);
+	virtual ~Belladona();
 };
 

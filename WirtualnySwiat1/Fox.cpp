@@ -2,7 +2,7 @@
 
 
 
-Fox::Fox()
+Fox::Fox(World& WorldToLive) : Animal(3, 7, WorldToLive)
 {
 }
 

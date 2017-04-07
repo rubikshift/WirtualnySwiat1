@@ -4,7 +4,7 @@ class Guarana :
 	public Plant
 {
 public:
-	Guarana();
-	~Guarana();
+	Guarana(World& WorldToLive);
+	virtual ~Guarana();
 };
 
