@@ -7,18 +7,25 @@ class World;
 class Organism
 {
 public:
-	Organism();
 	Organism(int Strength, int Initative, World& WorldToLive);
 	virtual ~Organism();
 
-	int Act();
-	int Collide();
+	virtual int Act() = 0;
+	virtual int Collide(Organism* AnotherOrgansim) = 0;
 	virtual int Draw() = 0;
+	virtual int GetStrength() const;
+	virtual int GetInitative() const;
+	virtual int GetAge() const;
+	virtual bool IsDead();
+
 protected:
 	int Strength;
 	int Initative;
 	int Age;
+	bool isDead;
 	Point Position;
-	World& WorldToLive;
+	World& WorldToLive;	
+	virtual void Die();
+	virtual void Kill(Organism* AnotherOrganism);
 };
 

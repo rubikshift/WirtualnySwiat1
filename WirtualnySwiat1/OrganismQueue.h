@@ -1,15 +1,22 @@
 #pragma once
-#include "Node.h"
+#include "Organism.h"
 
-class Node;
+class Organism;
 
 class OrganismQueue
 {
 public:
-	OrganismQueue();
+	OrganismQueue(int m, int n);
 	~OrganismQueue();
 
+	void Add(Organism* LivingOrganism);
+	Organism* operator[](int i);
+	void Sort();
+	Organism* FindDead();
+
 private:
-	Node* First;
+	Organism** Organisms;
+	int Size;
+	int Count;
 };
 

@@ -143,11 +143,12 @@
     <ClInclude Include="Antelope.h" />
     <ClInclude Include="Belladona.h" />
     <ClInclude Include="CyberSheep.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="Fox.h" />
     <ClInclude Include="Grass.h" />
     <ClInclude Include="Guarana.h" />
     <ClInclude Include="Human.h" />
-    <ClInclude Include="Node.h" />
+    <ClInclude Include="MyRandom.h" />
     <ClInclude Include="Organism.h" />
     <ClInclude Include="OrganismQueue.h" />
     <ClInclude Include="Plant.h" />
@@ -170,7 +171,7 @@
     <ClCompile Include="Guarana.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="MyRandom.cpp" />
     <ClCompile Include="Organism.cpp" />
     <ClCompile Include="OrganismQueue.cpp" />
     <ClCompile Include="Plant.cpp" />

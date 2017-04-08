@@ -2,22 +2,26 @@
 #include "WorldField.h"
 #include "OrganismQueue.h"
 
+class Organism;
 class OrganismQueue;
 
 class World
 {
 public:
 	World();
-	World(int m, int n);
+	World(int Width, int Height);
 	~World();
 
 	int MakeTurn();
 	int Draw();
 	WorldField** GetMap();
+	void AddOrganismToWorld(Organism* LivingOrganism);
+	int GetWidth() const;
+	int GetHeight() const;
 
 private:
 	WorldField** Map;
 	OrganismQueue* Organisms;
-	int m, n;
+	int Width, Height;
 };
 
