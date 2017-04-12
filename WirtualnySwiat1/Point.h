@@ -4,7 +4,7 @@ class Point
 public:
 	Point();
 	Point(int x, int y);
-	Point(Point P);
+	Point(const Point& P);
 	~Point();
 	int GetX() const;
 	int GetY() const;

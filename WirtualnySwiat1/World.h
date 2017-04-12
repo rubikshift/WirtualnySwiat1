@@ -18,6 +18,7 @@ public:
 	void AddOrganismToWorld(Organism* LivingOrganism);
 	int GetWidth() const;
 	int GetHeight() const;
+	OrganismQueue* GetOrganismQueue();
 
 private:
 	WorldField** Map;

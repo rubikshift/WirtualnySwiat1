@@ -70,7 +70,7 @@ Organism * OrganismQueue::FindDead()
 	return nullptr;
 }
 
-Organism * OrgainsmQueue::Find(Point P)
+Organism * OrganismQueue::Find(Point P)
 {
 	for (int i = 0; i < Size; i++)
 		if (Organisms[i]->GetPosition() == P)

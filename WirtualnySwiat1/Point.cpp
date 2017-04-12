@@ -14,7 +14,7 @@ Point::Point(int x, int y)
 	this->y = y;
 }
 
-Point::Point(Point P)
+Point::Point(const Point& P)
 {
 	this->x = P.GetX();
 	this->y = P.GetY();
@@ -50,7 +50,7 @@ void Point::operator=(Point P)
 	this->y = P.GetY();
 }
 
-void Point::operator==(Point P)
+bool Point::operator==(Point P)
 {
 	return this->x == P.GetX() && this->y == P.GetY();
 }

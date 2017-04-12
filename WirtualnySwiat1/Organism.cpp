@@ -30,6 +30,11 @@ int Organism::GetAge() const
 	return this->Age;
 }
 
+Point Organism::GetPosition() const
+{
+	return this->Position;
+}
+
 void Organism::Die()
 {
 	this->isDead = true;

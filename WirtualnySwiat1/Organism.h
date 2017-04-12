@@ -16,6 +16,7 @@ public:
 	virtual int GetStrength() const;
 	virtual int GetInitative() const;
 	virtual int GetAge() const;
+	virtual Point GetPosition() const;
 	virtual bool IsDead();
 
 protected:

@@ -109,3 +109,8 @@ int World::GetHeight() const
 {
 	return this->Height;
 }
+
+OrganismQueue * World::GetOrganismQueue()
+{
+	return this->Organisms;
+}

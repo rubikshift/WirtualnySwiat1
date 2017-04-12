@@ -1,5 +1,6 @@
 #pragma once
 #include "Organism.h"
+#include "Point.h"
 
 class Organism;
 
