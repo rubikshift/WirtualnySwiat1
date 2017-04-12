@@ -13,6 +13,7 @@ public:
 	Organism* operator[](int i);
 	void Sort();
 	Organism* FindDead();
+	Organism* Find(Point P);
 
 private:
 	Organism** Organisms;

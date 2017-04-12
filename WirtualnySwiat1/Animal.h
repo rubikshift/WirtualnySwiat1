@@ -7,7 +7,7 @@ public:
 	Animal(int Strength, int Initative, World& WorldToLive);
 	virtual ~Animal();
 
-	virtual int Act() = 0;
+	virtual int Act();
 	virtual int Collide(Organism* AnotherOrgansim) = 0;
 	virtual int Draw() = 0;
 private:

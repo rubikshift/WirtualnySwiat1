@@ -69,3 +69,11 @@ Organism * OrganismQueue::FindDead()
 			return Organisms[i];
 	return nullptr;
 }
+
+Organism * OrgainsmQueue::Find(Point P)
+{
+	for (int i = 0; i < Size; i++)
+		if (Organisms[i]->GetPosition() == P)
+			return Organisms[i];
+	return nullptr;
+}

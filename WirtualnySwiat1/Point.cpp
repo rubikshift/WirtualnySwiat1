@@ -14,6 +14,12 @@ Point::Point(int x, int y)
 	this->y = y;
 }
 
+Point::Point(Point P)
+{
+	this->x = P.GetX();
+	this->y = P.GetY();
+}
+
 Point::~Point()
 {
 }
@@ -36,4 +42,15 @@ void Point::SetX(int x)
 void Point::SetY(int y)
 {
 	this->y = y;
+}
+
+void Point::operator=(Point P)
+{
+	this->x = P.GetX();
+	this->y = P.GetY();
+}
+
+void Point::operator==(Point P)
+{
+	return this->x == P.GetX() && this->y == P.GetY();
 }
