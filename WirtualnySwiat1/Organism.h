@@ -8,6 +8,7 @@ class Organism
 {
 public:
 	Organism(int Strength, int Initative, World& WorldToLive);
+	Organism(int Strength, int Initative, World& WorldToLive, Point P);
 	virtual ~Organism();
 
 	virtual int Act() = 0;
@@ -17,8 +18,13 @@ public:
 	virtual int GetInitative() const;
 	virtual int GetAge() const;
 	virtual Point GetPosition() const;
-	virtual bool IsDead();
-
+	virtual bool IsDead() const;
+	virtual void GetOlder();
+	virtual void Reproduce() = 0;
+	virtual void Fight(Organism* Enemy);
+	virtual bool DeflectedAttack(Organism* Enemy) const;
+	virtual void Eat(Organism* SomePlant);
+	
 protected:
 	int Strength;
 	int Initative;
@@ -28,5 +34,6 @@ protected:
 	World& WorldToLive;	
 	virtual void Die();
 	virtual void Kill(Organism* AnotherOrganism);
+	virtual Point GetChildPosition();
 };
 

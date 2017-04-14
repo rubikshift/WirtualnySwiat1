@@ -17,3 +17,8 @@ int Turtle::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = TURTLE;
 	return 0;
 }
+
+bool Turtle::DeflectedAttack(Organism * Enemy) const
+{
+	return Enemy->GetStrength() < 5;
+}

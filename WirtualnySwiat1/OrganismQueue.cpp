@@ -19,13 +19,11 @@ OrganismQueue::~OrganismQueue()
 
 void OrganismQueue::Add(Organism * LivingOrganism)
 {
-	if (Count >= Size)
+	if (this->FindDead() != -1)
 	{
-		Organism* tmp = this->FindDead();
-		if(tmp == nullptr)
-			return;
-		delete tmp;
-		tmp = LivingOrganism;
+		int i = this->FindDead();
+		delete this->Organisms[i];
+		this->Organisms[i] = LivingOrganism;
 	}
 	else
 	{
@@ -44,7 +42,7 @@ Organism * OrganismQueue::operator[](int i)
 
 void OrganismQueue::Sort()
 {
-	if (Count == 0)
+	if (Count == 0 || Count >= Size)
 		return;
 	Organism* temp;
 	for (int i = 0; i < Count; i++)
@@ -62,18 +60,23 @@ void OrganismQueue::Sort()
 		}
 }
 
-Organism * OrganismQueue::FindDead()
+int OrganismQueue::FindDead()
 {
 	for (int i = 0; i < Size; i++)
-		if (Organisms[i]->IsDead())
-			return Organisms[i];
-	return nullptr;
+		if (Organisms[i] != nullptr && Organisms[i]->IsDead())
+			return i;
+	return -1;
 }
 
 Organism * OrganismQueue::Find(Point P)
 {
 	for (int i = 0; i < Size; i++)
-		if (Organisms[i]->GetPosition() == P)
+		if (Organisms[i] != nullptr && Organisms[i]->GetPosition() == P)
 			return Organisms[i];
 	return nullptr;
+}
+
+int OrganismQueue::GetCount() const
+{
+	return this->Count;
 }

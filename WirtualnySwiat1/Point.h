@@ -12,6 +12,7 @@ public:
 	void SetY(int y);
 	void operator=(Point P);
 	bool operator==(Point P);
+	bool operator!=(Point P);
 private:
 	int x;
 	int y;

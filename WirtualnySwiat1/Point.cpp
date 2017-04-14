@@ -54,3 +54,8 @@ bool Point::operator==(Point P)
 {
 	return this->x == P.GetX() && this->y == P.GetY();
 }
+
+bool Point::operator!=(Point P)
+{
+	return !(*this == P);
+}

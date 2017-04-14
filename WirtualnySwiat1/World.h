@@ -1,6 +1,7 @@
 #pragma once
 #include "WorldField.h"
 #include "OrganismQueue.h"
+#include "Point.h"
 
 class Organism;
 class OrganismQueue;
@@ -19,6 +20,7 @@ public:
 	int GetWidth() const;
 	int GetHeight() const;
 	OrganismQueue* GetOrganismQueue();
+	bool IsEmptyNear(Point P);
 
 private:
 	WorldField** Map;

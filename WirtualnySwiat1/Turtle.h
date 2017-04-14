@@ -7,5 +7,6 @@ public:
 	Turtle(World& WorldToLive);
 	virtual ~Turtle();
 	int Draw() override;
+	bool DeflectedAttack(Organism* Enemy) const override;
 };
 

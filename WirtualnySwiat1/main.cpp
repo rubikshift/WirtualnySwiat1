@@ -1,3 +1,6 @@
+#include <cstdlib>
+#include <cstdio>
+#include <conio.h>
 #include "Animal.h"
 #include "Antelope.h"
 #include "Belladona.h"
@@ -19,5 +22,17 @@
 
 int main()
 {
+	auto GameWorld = new World(20, 20);
+	auto Owca = new Sheep(*GameWorld);
+	auto Owca2 = new Sheep(*GameWorld);
+	auto Wilk = new Wolf(*GameWorld);
+	auto Wilk2 = new Wolf(*GameWorld);
+	while (true)
+	{
+		GameWorld->MakeTurn();
+		GameWorld->Draw();
+		getch();
+		system("cls");
+	}
 	return 0;
 }
