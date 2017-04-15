@@ -34,6 +34,14 @@ int Sheep::Collide(Organism * AnotherOrganism)
 void Sheep::Reproduce()
 {
 	Point ChildPosition = this->GetChildPosition();
-	if(ChildPosition != this->Position)
+	if (ChildPosition != this->Position)
+	{
 		auto YoungSheep = new Sheep(this->WorldToLive, ChildPosition);
+		Animal::Reproduce();
+	}
+}
+
+std::string Sheep::GetSpecies()
+{
+	return "Owca";
 }

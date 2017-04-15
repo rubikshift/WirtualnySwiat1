@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "World.h"
 #include "Point.h"
 
@@ -22,8 +23,9 @@ public:
 	virtual void GetOlder();
 	virtual void Reproduce() = 0;
 	virtual void Fight(Organism* Enemy);
-	virtual bool DeflectedAttack(Organism* Enemy) const;
+	virtual bool DeflectedAttack(Organism* Enemy);
 	virtual void Eat(Organism* SomePlant);
+	virtual std::string GetSpecies() = 0;
 	
 protected:
 	int Strength;

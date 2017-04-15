@@ -17,3 +17,8 @@ int CyberSheep::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = CYBER_SHEEP;
 	return 0;
 }
+
+std::string CyberSheep::GetSpecies()
+{
+	return "Cyber owca";
+}

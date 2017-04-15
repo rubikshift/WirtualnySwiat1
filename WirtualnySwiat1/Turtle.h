@@ -5,8 +5,13 @@ class Turtle :
 {
 public:
 	Turtle(World& WorldToLive);
+	Turtle(World& WorldToLive, Point P);
 	virtual ~Turtle();
 	int Draw() override;
-	bool DeflectedAttack(Organism* Enemy) const override;
+	bool DeflectedAttack(Organism* Enemy) override;
+	int Act() override;
+	int Collide(Organism* AnotherOrganism) override;
+	void Reproduce() override;
+	std::string GetSpecies() override;
 };
 

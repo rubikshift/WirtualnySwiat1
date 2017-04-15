@@ -17,3 +17,8 @@ int Grass::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = GRASS;
 	return 0;
 }
+
+std::string Grass::GetSpecies()
+{
+	return "Trawa";
+}

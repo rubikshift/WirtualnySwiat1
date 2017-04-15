@@ -79,3 +79,8 @@ int Animal::Collide(Organism* AnotherOrganism)
 		this->Fight(AnotherOrganism);
 	return 0;
 }
+
+void Animal::Reproduce()
+{
+	this->WorldToLive.AddLog("Milosc rosnie wokol nas! Urodzilo sie nowe zwierzatko (" + this->GetSpecies() + ")");
+}

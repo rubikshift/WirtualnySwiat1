@@ -63,13 +63,20 @@ void Organism::GetOlder()
 
 void Organism::Fight(Organism * Enemy)
 {
+	this->WorldToLive.AddLog(this->GetSpecies() + " walczy z " + Enemy->GetSpecies());
 	if (this->Strength >= Enemy->GetStrength())
+	{
+		this->WorldToLive.AddLog(this->GetSpecies() + " zabija " + Enemy->GetSpecies());
 		Enemy->Die();
+	}
 	else
+	{
+		this->WorldToLive.AddLog(Enemy->GetSpecies() + " zabija " + this->GetSpecies());
 		this->Die();
+	}
 }
 
-bool Organism::DeflectedAttack(Organism * Enemy) const
+bool Organism::DeflectedAttack(Organism * Enemy)
 {
 	return false;
 }

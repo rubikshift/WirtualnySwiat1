@@ -11,7 +11,7 @@ public:
 	virtual int Act();
 	virtual int Collide(Organism* AnotherOrgansim) override;
 	virtual int Draw() = 0;
-private:
+	virtual void Reproduce() override;
 
 };
 

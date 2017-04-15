@@ -7,5 +7,6 @@ public:
 	CyberSheep(World& WorldToLive);
 	virtual ~CyberSheep();
 	int Draw() override;
+	std::string GetSpecies() override;
 };
 

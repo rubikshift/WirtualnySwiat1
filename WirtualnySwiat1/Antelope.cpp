@@ -29,3 +29,8 @@ int Antelope::Collide(Organism * AnotherOrgansim)
 {
 	return 0;
 }
+
+std::string Antelope::GetSpecies()
+{
+	return "Antylopa";
+}

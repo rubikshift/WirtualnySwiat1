@@ -7,5 +7,6 @@ public:
 	SosnowskyHogweed(World& WorldToLive);
 	virtual ~SosnowskyHogweed();
 	int Draw() override;
+	std::string GetSpecies() override;
 };
 

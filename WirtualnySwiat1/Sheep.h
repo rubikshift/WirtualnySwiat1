@@ -11,5 +11,6 @@ public:
 	int Draw() override;
 	int Collide(Organism* AnotherOrganism) override;
 	void Reproduce() override;
+	std::string GetSpecies() override;
 };
 

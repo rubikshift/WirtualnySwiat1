@@ -7,5 +7,6 @@ public:
 	Belladona(World& WorldToLive);
 	virtual ~Belladona();
 	int Draw() override;
+	std::string GetSpecies() override;
 };
 

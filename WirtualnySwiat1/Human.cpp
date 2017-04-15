@@ -17,3 +17,8 @@ int Human::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = HUMAN;
 	return 0;
 }
+
+std::string Human::GetSpecies()
+{
+	return "Czlowiek";
+}

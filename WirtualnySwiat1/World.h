@@ -1,7 +1,11 @@
 #pragma once
+#include <list>
+#include <string>
 #include "WorldField.h"
 #include "OrganismQueue.h"
 #include "Point.h"
+
+#define DEBUG
 
 class Organism;
 class OrganismQueue;
@@ -21,10 +25,15 @@ public:
 	int GetHeight() const;
 	OrganismQueue* GetOrganismQueue();
 	bool IsEmptyNear(Point P);
+	void AddLog(std::string Log);
 
 private:
 	WorldField** Map;
 	OrganismQueue* Organisms;
 	int Width, Height;
+	std::list<std::string> Logs;
+#ifdef DEBUG
+	std::string LogFile;
+#endif // DEBUG
 };
 

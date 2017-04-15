@@ -17,3 +17,8 @@ int SosnowskyHogweed::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = SOSNOWSKY_HOGWEED;
 	return 0;
 }
+
+std::string SosnowskyHogweed::GetSpecies()
+{
+	return "Barszcz Sosnowskiego";
+}

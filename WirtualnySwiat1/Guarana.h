@@ -7,5 +7,6 @@ public:
 	Guarana(World& WorldToLive);
 	virtual ~Guarana();
 	int Draw() override;
+	std::string GetSpecies() override;
 };
 

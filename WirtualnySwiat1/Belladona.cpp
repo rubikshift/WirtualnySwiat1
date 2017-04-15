@@ -17,3 +17,8 @@ int Belladona::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = BELLADONA;
 	return 0;
 }
+
+std::string Belladona::GetSpecies()
+{
+	return "Wilcza jagoda";
+}

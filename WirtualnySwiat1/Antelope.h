@@ -9,5 +9,6 @@ public:
 	int Draw() override;
 	int Act() override;
 	int Collide(Organism* AnotherOrgansim) override;
+	std::string GetSpecies() override;
 };
 

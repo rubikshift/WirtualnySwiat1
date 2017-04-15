@@ -1,6 +1,7 @@
 #include "World.h"
 #include <iostream>
-
+#include <fstream>
+#include <ctime>
 
 World::World()
 {
@@ -14,6 +15,9 @@ World::World(int Width, int Height)
 	for (int i = 0; i < Width; i++)
 		this->Map[i] = new WorldField[Height];
 	this->Organisms = new OrganismQueue(Width, Height);
+#ifdef DEBUG
+	LogFile = std::to_string(time(NULL)) + "_logs.txt";
+#endif // DEBUG
 }
 
 
@@ -107,6 +111,13 @@ int World::Draw()
 		}
 		std::cout << std::endl;
 	}
+
+	while (!this->Logs.empty())
+	{
+		std::cout << this->Logs.front() << std::endl;
+		this->Logs.pop_front();
+	}
+
 	return 0;
 }
 
@@ -147,4 +158,18 @@ bool World::IsEmptyNear(Point P)
 	else if (P.GetY() - 1 >= 0 && this->Organisms->Find({ P.GetX(), P.GetY() - 1 }) == nullptr)
 		return true;
 	return false;
+}
+
+void World::AddLog(std::string Log)
+{
+	Logs.push_back(Log);
+
+#ifdef DEBUG
+	time_t rawTime;
+	time(&rawTime);
+	auto ptm = gmtime(&rawTime);
+	std::ofstream out(LogFile, std::ofstream::out | std::ofstream::app);
+	out << (ptm->tm_hour+2)%24 << ":" << ptm->tm_min << ":" << ptm->tm_sec << " " << Log << std::endl;
+	out.close();
+#endif // DEBUG
 }

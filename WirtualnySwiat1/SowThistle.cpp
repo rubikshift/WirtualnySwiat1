@@ -17,3 +17,8 @@ int SowThistle::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = SOW_THISTLE;
 	return 0;
 }
+
+std::string SowThistle::GetSpecies()
+{
+	return "Mlecz";
+}

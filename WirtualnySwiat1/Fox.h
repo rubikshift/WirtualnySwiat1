@@ -7,5 +7,6 @@ public:
 	Fox(World& WorldToLive);
 	virtual ~Fox();
 	int Draw() override;
+	std::string GetSpecies() override;
 };
 

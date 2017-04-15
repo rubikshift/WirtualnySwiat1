@@ -17,3 +17,8 @@ int Guarana::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = GUARANA;
 	return 0;
 }
+
+std::string Guarana::GetSpecies()
+{
+	return "Guarana";
+}

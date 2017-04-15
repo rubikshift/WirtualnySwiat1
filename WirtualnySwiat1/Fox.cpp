@@ -17,3 +17,8 @@ int Fox::Draw()
 	Map[this->Position.GetX()][this->Position.GetY()] = FOX;
 	return 0;
 }
+
+std::string Fox::GetSpecies()
+{
+	return "Lis";
+}
