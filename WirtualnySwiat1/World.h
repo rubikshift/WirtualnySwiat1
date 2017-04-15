@@ -31,7 +31,7 @@ public:
 private:
 	WorldField** Map;
 	OrganismQueue* Organisms;
-	int Width, Height;
+	int Width, Height, Turn;
 	std::list<std::string> Logs;
 #ifdef DEBUG
 	std::ofstream out;

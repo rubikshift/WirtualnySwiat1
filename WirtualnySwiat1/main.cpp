@@ -45,16 +45,12 @@ int main()
 	auto Wilk1 = new Wolf(*GameWorld);
 	auto Wilk2 = new Wolf(*GameWorld);
 
-	unsigned int Turn = 0;
-
 	while (true)
 	{
 		std::cout << "Michal Krakowiak, 165596" << std::endl;
-		std::cout << "Tura nr " << Turn << std::endl;
-		Turn++;
-		GameWorld->MakeTurn();
 		GameWorld->Draw();
-		Sleep(500);
+		GameWorld->MakeTurn();
+		Sleep(100);
 		system("cls");
 	}
 	return 0;

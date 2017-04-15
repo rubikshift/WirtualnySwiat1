@@ -15,8 +15,9 @@ World::World(int Width, int Height)
 	for (int i = 0; i < Width; i++)
 		this->Map[i] = new WorldField[Height];
 	this->Organisms = new OrganismQueue(Width, Height);
+	this->Turn = 0;
 #ifdef DEBUG
-	out.open(std::to_string(time(NULL)) + "_logs.txt", std::ofstream::out | std::ofstream::app);
+	out.open(std::to_string(time(NULL)) + "_logs.txt", std::ofstream::out);
 #endif // DEBUG
 }
 
@@ -42,11 +43,14 @@ int World::MakeTurn()
 			(*Organisms)[i]->GetOlder();
 		}
 	}
+	this->Turn++;
 	return 0;
 }
 
 int World::Draw()
 {
+	std::cout << "Tura nr " << this->Turn << std::endl;
+
 	for (int x = 0; x < Width; x++)
 		for (int y = 0; y < Height; y++)
 			this->Map[x][y] = EMPTY;
@@ -171,6 +175,6 @@ void World::AddLog(std::string Log)
 	time_t rawTime;
 	time(&rawTime);
 	auto ptm = gmtime(&rawTime);
-	out << (ptm->tm_hour+2)%24 << ":" << ptm->tm_min << ":" << ptm->tm_sec << " " << Log << std::endl;
+	out << "Tura: " << this->Turn << ", "<< (ptm->tm_hour+2)%24 << ":" << ptm->tm_min << ":" << ptm->tm_sec << ", " << Log << std::endl;
 #endif // DEBUG
 }
