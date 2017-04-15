@@ -37,6 +37,10 @@ int main()
 	auto Antylopa1 = new Antelope(*GameWorld);
 	auto Antylopa2 = new Antelope(*GameWorld);
 	auto Antylopa3 = new Antelope(*GameWorld);
+	auto Lis = new Fox(*GameWorld);
+	auto Lis1 = new Fox(*GameWorld);
+	auto Lis2 = new Fox(*GameWorld);
+	auto Lis3 = new Fox(*GameWorld);
 	auto Wilk = new Wolf(*GameWorld);
 	auto Wilk1 = new Wolf(*GameWorld);
 	auto Wilk2 = new Wolf(*GameWorld);
@@ -50,7 +54,7 @@ int main()
 		Turn++;
 		GameWorld->MakeTurn();
 		GameWorld->Draw();
-		Sleep(100);
+		Sleep(500);
 		system("cls");
 	}
 	return 0;
