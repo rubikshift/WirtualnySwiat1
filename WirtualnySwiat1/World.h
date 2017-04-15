@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <fstream>
 #include <string>
 #include "WorldField.h"
 #include "OrganismQueue.h"
@@ -33,7 +34,7 @@ private:
 	int Width, Height;
 	std::list<std::string> Logs;
 #ifdef DEBUG
-	std::string LogFile;
+	std::ofstream out;
 #endif // DEBUG
 };
 

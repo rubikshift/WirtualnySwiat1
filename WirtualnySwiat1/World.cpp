@@ -1,6 +1,6 @@
 #include "World.h"
 #include <iostream>
-#include <fstream>
+
 #include <ctime>
 
 World::World()
@@ -16,7 +16,7 @@ World::World(int Width, int Height)
 		this->Map[i] = new WorldField[Height];
 	this->Organisms = new OrganismQueue(Width, Height);
 #ifdef DEBUG
-	LogFile = std::to_string(time(NULL)) + "_logs.txt";
+	out.open(std::to_string(time(NULL)) + "_logs.txt", std::ofstream::out | std::ofstream::app);
 #endif // DEBUG
 }
 
@@ -27,6 +27,9 @@ World::~World()
 		delete Map[i];
 	delete Map;
 	delete Organisms;
+#ifdef DEBUG
+	out.close();
+#endif // DEBUG
 }
 
 int World::MakeTurn()
@@ -168,8 +171,6 @@ void World::AddLog(std::string Log)
 	time_t rawTime;
 	time(&rawTime);
 	auto ptm = gmtime(&rawTime);
-	std::ofstream out(LogFile, std::ofstream::out | std::ofstream::app);
 	out << (ptm->tm_hour+2)%24 << ":" << ptm->tm_min << ":" << ptm->tm_sec << " " << Log << std::endl;
-	out.close();
 #endif // DEBUG
 }
