@@ -5,10 +5,12 @@ class Antelope :
 {
 public:
 	Antelope(World& WorldToLive);
+	Antelope(World& WorldToLive, Point P);
 	virtual ~Antelope();
 	int Draw() override;
-	int Act() override;
-	int Collide(Organism* AnotherOrgansim) override;
+	int Collide(Organism* AnotherOrganism) override;
+	void Reproduce() override;
+	bool RunAway(Organism* Enemy) override;
 	std::string GetSpecies() override;
 };
 

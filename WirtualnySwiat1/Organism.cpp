@@ -81,6 +81,11 @@ bool Organism::DeflectedAttack(Organism * Enemy)
 	return false;
 }
 
+bool Organism::RunAway(Organism* Enemy)
+{
+	return false;
+}
+
 void Organism::Eat(Organism * SomePlant)
 {
 	SomePlant->Collide(this);

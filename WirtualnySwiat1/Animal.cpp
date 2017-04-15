@@ -5,10 +5,12 @@
 
 Animal::Animal(int Strength, int Initative, World& WorldToLive) : Organism(Strength, Initative, WorldToLive)
 {
+	this->MoveDistance = 1;
 }
 
 Animal::Animal(int Strength, int Initative, World & WorldToLive, Point P) : Organism(Strength, Initative, WorldToLive, P)
 {
+	this->MoveDistance = 1;
 }
 
 
@@ -29,31 +31,31 @@ int Animal::Act()
 		switch (dir)
 		{
 			case LEFT:
-				if (this->Position.GetX() - 1 >= 0)
+				if (this->Position.GetX() - this->MoveDistance >= 0)
 				{
-					FuturePosition = { this->Position.GetX() - 1, this->Position.GetY() };
+					FuturePosition = { this->Position.GetX() - this->MoveDistance, this->Position.GetY() };
 					isSet = true;
 				}
 				break;
 			case RIGHT:
-				if(this->Position.GetX() + 1 < this->WorldToLive.GetWidth())
+				if(this->Position.GetX() + this->MoveDistance < this->WorldToLive.GetWidth())
 				{
 
-					FuturePosition = {this->Position.GetX() + 1, this->Position.GetY()};
+					FuturePosition = {this->Position.GetX() + this->MoveDistance, this->Position.GetY()};
 					isSet = true;
 				}
 				break;
 			case UP:
-				if(this->Position.GetY() - 1 >= 0)
+				if(this->Position.GetY() - this->MoveDistance >= 0)
 				{
-					FuturePosition = {this->Position.GetX(), this->Position.GetY() - 1 };
+					FuturePosition = {this->Position.GetX(), this->Position.GetY() - this->MoveDistance };
 					isSet = true;
 				}
 				break;
 			case DOWN:
-				if (this->Position.GetY() + 1 < this->WorldToLive.GetHeight())
+				if (this->Position.GetY() + this->MoveDistance < this->WorldToLive.GetHeight())
 				{
-					FuturePosition = { this->Position.GetX(), this->Position.GetY() + 1 };
+					FuturePosition = { this->Position.GetX(), this->Position.GetY() + this->MoveDistance };
 					isSet = true;
 				}
 				break;
@@ -75,7 +77,7 @@ int Animal::Collide(Organism* AnotherOrganism)
 {
 	if (dynamic_cast<Plant*>(AnotherOrganism))
 		this->Eat(AnotherOrganism);
-	else if (!AnotherOrganism->DeflectedAttack(this))
+	else if (!AnotherOrganism->DeflectedAttack(this) && !AnotherOrganism->RunAway(this))
 		this->Fight(AnotherOrganism);
 	return 0;
 }

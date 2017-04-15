@@ -12,6 +12,8 @@ public:
 	virtual int Collide(Organism* AnotherOrgansim) override;
 	virtual int Draw() = 0;
 	virtual void Reproduce() override;
+protected:
+	int MoveDistance;
 
 };
 
