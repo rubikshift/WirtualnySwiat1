@@ -8,6 +8,7 @@ Organism::Organism(int Strength, int Initative, World& WorldToLive) : WorldToLiv
 	this->Initative = Initative;
 	Age = 0;
 	isDead = false;
+	isTurnAllowed = false;
 	MyRandom random;
 	bool ok = false;
 	while (!ok)
@@ -27,6 +28,7 @@ Organism::Organism(int Strength, int Initative, World & WorldToLive, Point P) : 
 	this->Initative = Initative;
 	Age = 0;
 	isDead = false;
+	isTurnAllowed = false;
 	this->Position = P;
 	this->WorldToLive.AddOrganismToWorld(this);
 }
@@ -88,6 +90,7 @@ bool Organism::RunAway(Organism* Enemy)
 
 void Organism::Eat(Organism * SomePlant)
 {
+	this->WorldToLive.AddLog(this->GetSpecies() + " zjada " + SomePlant->GetSpecies());
 	SomePlant->Collide(this);
 	SomePlant->Die();
 }
@@ -152,6 +155,16 @@ void Organism::Die()
 bool Organism::IsDead() const
 {
 	return isDead;
+}
+
+bool Organism::IsTurnAllowed() const
+{
+	return this->isTurnAllowed;
+}
+
+void Organism::AllowMakingTurn()
+{
+	this->isTurnAllowed = true;
 }
 
 void Organism::Kill(Organism * AnotherOrganism)

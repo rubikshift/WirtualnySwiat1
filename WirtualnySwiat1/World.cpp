@@ -36,8 +36,11 @@ World::~World()
 int World::MakeTurn()
 {
 	for (int i = 0; i < Organisms->GetCount(); i++)
+		(*Organisms)[i]->AllowMakingTurn();
+
+	for (int i = 0; i < Organisms->GetCount(); i++)
 	{
-		if (!((*Organisms)[i]->IsDead()))
+		if (!((*Organisms)[i]->IsDead()) && (*Organisms)[i]->IsTurnAllowed())
 		{
 			(*Organisms)[i]->Act();
 			(*Organisms)[i]->GetOlder();
@@ -121,7 +124,7 @@ int World::Draw()
 
 	while (!this->Logs.empty())
 	{
-		std::cout << this->Logs.front() << std::endl;
+		//std::cout << this->Logs.front() << std::endl;
 		this->Logs.pop_front();
 	}
 

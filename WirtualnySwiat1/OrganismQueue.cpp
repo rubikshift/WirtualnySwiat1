@@ -14,6 +14,8 @@ OrganismQueue::OrganismQueue(int m, int n)
 
 OrganismQueue::~OrganismQueue()
 {
+	for (int i = 0; i < this->Count; i++)
+		delete Organisms[i];
 	delete[] Organisms;
 }
 

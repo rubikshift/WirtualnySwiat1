@@ -23,12 +23,12 @@
 
 int main()
 {
-	auto GameWorld = new World(20, 20);
+	auto GameWorld = new World(40, 25);
 
 	auto Owca = new Sheep(*GameWorld);
+	auto Owca1 = new Sheep(*GameWorld);
 	auto Owca2 = new Sheep(*GameWorld);
 	auto Owca3 = new Sheep(*GameWorld);
-	auto Owca4 = new Sheep(*GameWorld);
 	auto Zolw = new Turtle(*GameWorld);
 	auto Zolw1 = new Turtle(*GameWorld);
 	auto Zolw2 = new Turtle(*GameWorld);
@@ -44,13 +44,19 @@ int main()
 	auto Wilk = new Wolf(*GameWorld);
 	auto Wilk1 = new Wolf(*GameWorld);
 	auto Wilk2 = new Wolf(*GameWorld);
+	auto Trawa = new Grass(*GameWorld);
+	auto Trawa1 = new Grass(*GameWorld);
+	auto Mlecz = new SowThistle(*GameWorld);
+	auto Mlecz1 = new SowThistle(*GameWorld);
+	auto Mlecz2 = new SowThistle(*GameWorld);
+
 
 	while (true)
 	{
 		std::cout << "Michal Krakowiak, 165596" << std::endl;
 		GameWorld->Draw();
 		GameWorld->MakeTurn();
-		Sleep(100);
+		Sleep(10);
 		system("cls");
 	}
 	return 0;

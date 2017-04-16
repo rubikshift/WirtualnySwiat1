@@ -1,6 +1,6 @@
 #include "Antelope.h"
 #include "MyRandom.h"
-
+#include "Plant.h"
 
 Antelope::Antelope(World& WorldToLive) : Animal(4, 4, WorldToLive)
 {
@@ -28,7 +28,7 @@ int Antelope::Collide(Organism * AnotherOrganism)
 {
 	if (dynamic_cast<Antelope*>(AnotherOrganism))
 		this->Reproduce();
-	else if(!this->RunAway(AnotherOrganism))
+	else if(dynamic_cast<Plant*>(AnotherOrganism) != nullptr || !this->RunAway(AnotherOrganism))
 		Animal::Collide(AnotherOrganism);
 	return 0;
 }

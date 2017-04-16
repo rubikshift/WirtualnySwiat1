@@ -20,6 +20,8 @@ public:
 	virtual int GetAge() const;
 	virtual Point GetPosition() const;
 	virtual bool IsDead() const;
+	virtual bool IsTurnAllowed() const;
+	virtual void AllowMakingTurn();
 	virtual void GetOlder();
 	virtual void Reproduce() = 0;
 	virtual void Fight(Organism* Enemy);
@@ -33,6 +35,7 @@ protected:
 	int Initative;
 	int Age;
 	bool isDead;
+	bool isTurnAllowed;
 	Point Position;
 	World& WorldToLive;	
 	virtual void Die();

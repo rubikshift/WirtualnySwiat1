@@ -5,9 +5,15 @@ class Plant :
 {
 public:
 	Plant(int Strength, World& WorldToLive);
+	Plant(int Strength, World& WorldToLive, Point P);
 	virtual ~Plant();
 
-	virtual int Act() = 0;
+	virtual int Act() override;
 	virtual int Draw() = 0;
+	virtual void Reproduce() override;
+	virtual int Collide(Organism* AntoherOrganism) override;
+
+protected:
+	int ReproduceProbability;
 };
 
