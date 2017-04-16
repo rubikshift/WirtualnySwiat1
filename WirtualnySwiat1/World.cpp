@@ -18,6 +18,7 @@ World::World(int Width, int Height)
 	this->Turn = 0;
 #ifdef DEBUG
 	out.open(std::to_string(time(NULL)) + "_logs.txt", std::ofstream::out);
+	t = 0;
 #endif // DEBUG
 }
 
@@ -35,6 +36,10 @@ World::~World()
 
 int World::MakeTurn()
 {
+#ifdef DEBUG
+	auto x = time(NULL);
+#endif // DEBUG
+	this->Organisms->Sort();
 	for (int i = 0; i < Organisms->GetCount(); i++)
 		(*Organisms)[i]->AllowMakingTurn();
 
@@ -47,12 +52,19 @@ int World::MakeTurn()
 		}
 	}
 	this->Turn++;
+#ifdef DEBUG
+	auto n = time(NULL);
+	t = n - x;
+#endif // DEBUG	
 	return 0;
 }
 
 int World::Draw()
 {
 	std::cout << "Tura nr " << this->Turn << std::endl;
+#ifdef DEBUG
+	std::cout << "Czas tury: " << this->t <<" s" << std::endl;
+#endif // DEBUG	
 
 	for (int x = 0; x < Width; x++)
 		for (int y = 0; y < Height; y++)
@@ -139,7 +151,6 @@ WorldField ** World::GetMap()
 void World::AddOrganismToWorld(Organism * LivingOrganism)
 {
 	this->Organisms->Add(LivingOrganism);
-	this->Organisms->Sort();
 }
 
 int World::GetWidth() const

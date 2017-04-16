@@ -34,6 +34,7 @@ private:
 	int Width, Height, Turn;
 	std::list<std::string> Logs;
 #ifdef DEBUG
+	int t;
 	std::ofstream out;
 #endif // DEBUG
 };

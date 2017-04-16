@@ -17,6 +17,8 @@ Grass::~Grass()
 
 int Grass::Act()
 {
+	if (this->Position == this->GetChildPosition())
+		return 0;
 	for (int i = 0; i < 3; i++)
 		Plant::Act();
 	return 0;
