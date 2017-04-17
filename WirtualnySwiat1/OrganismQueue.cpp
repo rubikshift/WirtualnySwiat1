@@ -1,5 +1,5 @@
 #include "OrganismQueue.h"
-
+#include "Human.h"
 
 
 OrganismQueue::OrganismQueue(int m, int n)
@@ -65,7 +65,7 @@ void OrganismQueue::Sort()
 int OrganismQueue::FindDead()
 {
 	for (int i = 0; i < Size; i++)
-		if (Organisms[i] != nullptr && Organisms[i]->IsDead())
+		if (Organisms[i] != nullptr && Organisms[i]->IsDead() && dynamic_cast<Human*>(Organisms[i]) == nullptr)
 			return i;
 	return -1;
 }

@@ -1,7 +1,6 @@
 #include "World.h"
 #include <iostream>
 #include <ctime>
-
 #define SHOW_LOGS_OFF
 
 World::World()
@@ -110,7 +109,7 @@ int World::Draw()
 					std::cout << "G";
 					break;
 				case HUMAN:
-					std::cout << "P";
+					std::cout << "H";
 					break;
 				case SHEEP:
 					std::cout << "O";

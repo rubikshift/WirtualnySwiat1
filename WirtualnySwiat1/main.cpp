@@ -23,7 +23,7 @@
 
 int main()
 {
-	auto GameWorld = new World(50, 25);
+	auto GameWorld = new World(52, 23);
 
 	auto Owca0 = new Sheep(*GameWorld);
 	auto Owca1 = new Sheep(*GameWorld);
@@ -58,15 +58,15 @@ int main()
 	auto Guarana0 = new Guarana(*GameWorld);
 	auto Guarana1 = new Guarana(*GameWorld);
 	auto Guarana2 = new Guarana(*GameWorld);
+	auto Czlowiek = new Human(*GameWorld);
 
-
-	while (true)
+	while (!Czlowiek->IsDead())
 	{
-		std::cout << "Michal Krakowiak, 165596" << std::endl;
+		system("cls");
+		std::cout << "Michal Krakowiak, 165596, " << Czlowiek->GetStrength() << std::endl;
 		GameWorld->Draw();
 		GameWorld->MakeTurn();
-		Sleep(100);
-		system("cls");
 	}
+	GameWorld->AddLog("Gracz nie zyje, koniec gry :(");
 	return 0;
 }
