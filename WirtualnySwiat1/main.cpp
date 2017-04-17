@@ -23,32 +23,38 @@
 
 int main()
 {
-	auto GameWorld = new World(40, 25);
+	auto GameWorld = new World(50, 25);
 
-	auto Owca = new Sheep(*GameWorld);
+	auto Owca0 = new Sheep(*GameWorld);
 	auto Owca1 = new Sheep(*GameWorld);
 	auto Owca2 = new Sheep(*GameWorld);
 	auto Owca3 = new Sheep(*GameWorld);
-	auto Zolw = new Turtle(*GameWorld);
+	auto Zolw0 = new Turtle(*GameWorld);
 	auto Zolw1 = new Turtle(*GameWorld);
 	auto Zolw2 = new Turtle(*GameWorld);
 	auto Zolw3 = new Turtle(*GameWorld);
-	auto Antylopa = new Antelope(*GameWorld);
+	auto Antylopa0 = new Antelope(*GameWorld);
 	auto Antylopa1 = new Antelope(*GameWorld);
 	auto Antylopa2 = new Antelope(*GameWorld);
 	auto Antylopa3 = new Antelope(*GameWorld);
-	auto Lis = new Fox(*GameWorld);
+	auto Lis0 = new Fox(*GameWorld);
 	auto Lis1 = new Fox(*GameWorld);
 	auto Lis2 = new Fox(*GameWorld);
 	auto Lis3 = new Fox(*GameWorld);
-	auto Wilk = new Wolf(*GameWorld);
+	auto Wilk0 = new Wolf(*GameWorld);
 	auto Wilk1 = new Wolf(*GameWorld);
 	auto Wilk2 = new Wolf(*GameWorld);
-	auto Trawa = new Grass(*GameWorld);
+	auto Trawa0 = new Grass(*GameWorld);
 	auto Trawa1 = new Grass(*GameWorld);
-	auto Mlecz = new SowThistle(*GameWorld);
+	auto Mlecz0 = new SowThistle(*GameWorld);
 	auto Mlecz1 = new SowThistle(*GameWorld);
 	auto Mlecz2 = new SowThistle(*GameWorld);
+	auto WilczaJagoda0 = new Belladona(*GameWorld);
+	auto WilczaJagoda1 = new Belladona(*GameWorld);
+	auto WilczaJagoda2 = new Belladona(*GameWorld);
+	auto BarszczSosnowskiego0 = new SosnowskyHogweed(*GameWorld);
+	auto BarszczSosnowskiego1 = new SosnowskyHogweed(*GameWorld);
+	auto BarszczSosnowskiego2 = new SosnowskyHogweed(*GameWorld);
 
 
 	while (true)
@@ -56,7 +62,7 @@ int main()
 		std::cout << "Michal Krakowiak, 165596" << std::endl;
 		GameWorld->Draw();
 		GameWorld->MakeTurn();
-		Sleep(10);
+		Sleep(100);
 		system("cls");
 	}
 	return 0;

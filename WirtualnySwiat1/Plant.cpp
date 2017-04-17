@@ -1,15 +1,16 @@
 #include "Plant.h"
 #include "MyRandom.h"
 
+#define DEFAULT_PLANT_PROBABILTY 35
 
 Plant::Plant(int Strength, World& WorldToLive) : Organism(Strength, 0, WorldToLive)
 {
-	this->ReproduceProbability = 35;
+	this->ReproduceProbability = DEFAULT_PLANT_PROBABILTY;
 }
 
 Plant::Plant(int Strength, World& WorldToLive, Point P) : Organism(Strength, 0, WorldToLive, P)
 {
-	this->ReproduceProbability = 35;
+	this->ReproduceProbability = DEFAULT_PLANT_PROBABILTY;
 }
 
 int Plant::Act()

@@ -67,15 +67,9 @@ void Organism::Fight(Organism * Enemy)
 {
 	this->WorldToLive.AddLog(this->GetSpecies() + " walczy z " + Enemy->GetSpecies());
 	if (this->Strength >= Enemy->GetStrength())
-	{
-		this->WorldToLive.AddLog(this->GetSpecies() + " zabija " + Enemy->GetSpecies());
-		Enemy->Die();
-	}
+		this->Kill(Enemy);
 	else
-	{
-		this->WorldToLive.AddLog(Enemy->GetSpecies() + " zabija " + this->GetSpecies());
-		this->Die();
-	}
+		Enemy->Kill(this);
 }
 
 bool Organism::DeflectedAttack(Organism * Enemy)
@@ -101,6 +95,17 @@ Point Organism::GetChildPosition()
 	Direction dir;
 	Point ChildPosition;
 	bool isSet = false;
+
+	Point P1 = { this->Position.GetX() + 1, this->Position.GetY() };
+	Point P2 = { this->Position.GetX() - 1, this->Position.GetY() };
+	Point P3 = { this->Position.GetX(), this->Position.GetY() + 1 };
+	Point P4 = { this->Position.GetX(), this->Position.GetY() - 1 };
+
+	Organism* O1 = this->WorldToLive.GetOrganismQueue()->Find(P1);
+	Organism* O2 = this->WorldToLive.GetOrganismQueue()->Find(P2);
+	Organism* O3 = this->WorldToLive.GetOrganismQueue()->Find(P3);
+	Organism* O4 = this->WorldToLive.GetOrganismQueue()->Find(P4);
+
 	if (!this->WorldToLive.IsEmptyNear(this->Position))
 		return this->Position;
 	while(!isSet)
@@ -110,35 +115,35 @@ Point Organism::GetChildPosition()
 		switch (dir)
 		{
 			case LEFT:
-				if (this->Position.GetX() - 1 >= 0)
+				if (P2.GetX() >= 0)
 				{
-					ChildPosition = { this->Position.GetX() - 1, this->Position.GetY() };
-					if (this->WorldToLive.GetOrganismQueue()->Find(ChildPosition) == nullptr)
+					ChildPosition = P2;
+					if (O2 == nullptr)
 						isSet = true;
 				}
 				break;
 			case RIGHT:
-				if(this->Position.GetX() + 1 < this->WorldToLive.GetWidth())
+				if(P1.GetX()< this->WorldToLive.GetWidth())
 				{
 
-					ChildPosition = {this->Position.GetX() + 1, this->Position.GetY()};
-					if (this->WorldToLive.GetOrganismQueue()->Find(ChildPosition) == nullptr)
+					ChildPosition = P1;
+					if (O1 == nullptr)
 						isSet = true;
 				}
 				break;
 			case UP:
-				if(this->Position.GetY() - 1 >= 0)
+				if(P4.GetY() >= 0)
 				{
-					ChildPosition = {this->Position.GetX(), this->Position.GetY() - 1 };
-					if (this->WorldToLive.GetOrganismQueue()->Find(ChildPosition) == nullptr)
+					ChildPosition = P4;
+					if (O4 == nullptr)
 						isSet = true;
 				}
 				break;
 			case DOWN:
-				if (this->Position.GetY() + 1 < this->WorldToLive.GetHeight())
+				if (P3.GetY() < this->WorldToLive.GetHeight())
 				{
-					ChildPosition = { this->Position.GetX(), this->Position.GetY() + 1 };
-					if (this->WorldToLive.GetOrganismQueue()->Find(ChildPosition) == nullptr)
+					ChildPosition = P3;
+					if (O3 == nullptr)
 						isSet = true;
 				}
 				break;
@@ -169,5 +174,6 @@ void Organism::AllowMakingTurn()
 
 void Organism::Kill(Organism * AnotherOrganism)
 {
+	this->WorldToLive.AddLog(this->GetSpecies() + " zabija " + AnotherOrganism->GetSpecies());
 	AnotherOrganism->Die();
 }

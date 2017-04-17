@@ -25,41 +25,36 @@ int Animal::Act()
 	Direction dir;
 	Organism * AnotherOrganism;
 	bool isSet = false;
+
+	Point P1 = { this->Position.GetX() + MoveDistance, this->Position.GetY() };
+	Point P2 = { this->Position.GetX() - MoveDistance, this->Position.GetY() };
+	Point P3 = { this->Position.GetX(), this->Position.GetY() + MoveDistance };
+	Point P4 = { this->Position.GetX(), this->Position.GetY() - MoveDistance };
+
 	while(!isSet)
 	{
 		dir = random.RandomDirection();
 		switch (dir)
 		{
 			case LEFT:
-				if (this->Position.GetX() - this->MoveDistance >= 0)
-				{
-					FuturePosition = { this->Position.GetX() - this->MoveDistance, this->Position.GetY() };
-					isSet = true;
-				}
+				if (P2.GetX() >= 0)
+					FuturePosition = P2;
 				break;
 			case RIGHT:
-				if(this->Position.GetX() + this->MoveDistance < this->WorldToLive.GetWidth())
-				{
-
-					FuturePosition = {this->Position.GetX() + this->MoveDistance, this->Position.GetY()};
-					isSet = true;
-				}
+				if(P1.GetX() < this->WorldToLive.GetWidth())
+					FuturePosition = P1;
 				break;
 			case UP:
-				if(this->Position.GetY() - this->MoveDistance >= 0)
-				{
-					FuturePosition = {this->Position.GetX(), this->Position.GetY() - this->MoveDistance };
-					isSet = true;
-				}
+				if(P4.GetY() >= 0)
+					FuturePosition = P4;
 				break;
 			case DOWN:
-				if (this->Position.GetY() + this->MoveDistance < this->WorldToLive.GetHeight())
-				{
-					FuturePosition = { this->Position.GetX(), this->Position.GetY() + this->MoveDistance };
-					isSet = true;
-				}
+				if (P3.GetY() < this->WorldToLive.GetHeight())
+					FuturePosition = P3;
 				break;
 		}
+		if (Position != FuturePosition)
+			isSet = true;
 	}
 	AnotherOrganism = this->WorldToLive.GetOrganismQueue()->Find(FuturePosition);
 	if (AnotherOrganism != nullptr)

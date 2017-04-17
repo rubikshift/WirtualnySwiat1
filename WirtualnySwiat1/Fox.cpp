@@ -31,6 +31,17 @@ int Fox::Act()
 	Direction dir;
 	Organism * AnotherOrganism;
 	bool isSet = false;
+
+	Point P1 = { this->Position.GetX() + MoveDistance, this->Position.GetY() };
+	Point P2 = { this->Position.GetX() - MoveDistance, this->Position.GetY() };
+	Point P3 = { this->Position.GetX(), this->Position.GetY() + MoveDistance };
+	Point P4 = { this->Position.GetX(), this->Position.GetY() - MoveDistance };
+
+	Organism* O1 = this->WorldToLive.GetOrganismQueue()->Find(P1);
+	Organism* O2 = this->WorldToLive.GetOrganismQueue()->Find(P2);
+	Organism* O3 = this->WorldToLive.GetOrganismQueue()->Find(P3);
+	Organism* O4 = this->WorldToLive.GetOrganismQueue()->Find(P4);
+
 	if (!this->GoodNose())
 	{
 		this->WorldToLive.AddLog(this->GetSpecies() + " nie zweszyl dobrego miejsca, tu mu dobrze");
@@ -43,43 +54,35 @@ int Fox::Act()
 		switch (dir)
 		{
 			case LEFT:
-				if (this->Position.GetX() - this->MoveDistance >= 0)
+				if (P2.GetX() >= 0)
 				{
-					FuturePosition = { this->Position.GetX() - this->MoveDistance, this->Position.GetY() };
-					if(this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) == nullptr
-						|| (this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) != nullptr 
-						&& this->WorldToLive.GetOrganismQueue()->Find(FuturePosition)->GetStrength() <= this->Strength))
+					FuturePosition = P2;
+					if(O2 == nullptr || (O2 != nullptr && O2->GetStrength() <= this->Strength))
 						isSet = true;
 				}
 				break;
 			case RIGHT:
-				if(this->Position.GetX() + this->MoveDistance < this->WorldToLive.GetWidth())
+				if(P1.GetX() < this->WorldToLive.GetWidth())
 				{
 
-					FuturePosition = {this->Position.GetX() + this->MoveDistance, this->Position.GetY()};
-					if(this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) == nullptr
-						|| (this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) != nullptr 
-						&& this->WorldToLive.GetOrganismQueue()->Find(FuturePosition)->GetStrength() <= this->Strength))
+					FuturePosition = P1;
+					if(O1 == nullptr || (O1 != nullptr && O1->GetStrength() <= this->Strength))
 						isSet = true;
 				}
 				break;
 			case UP:
-				if(this->Position.GetY() - this->MoveDistance >= 0)
+				if(P4.GetY() >= 0)
 				{
-					FuturePosition = {this->Position.GetX(), this->Position.GetY() - this->MoveDistance };
-					if(this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) == nullptr
-						|| (this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) != nullptr 
-						&& this->WorldToLive.GetOrganismQueue()->Find(FuturePosition)->GetStrength() <= this->Strength))
+					FuturePosition = P4;
+					if(O4 == nullptr || (O4 != nullptr && O4->GetStrength() <= this->Strength))
 						isSet = true;
 				}
 				break;
 			case DOWN:
-				if (this->Position.GetY() + this->MoveDistance < this->WorldToLive.GetHeight())
+				if (P3.GetY() < this->WorldToLive.GetHeight())
 				{
-					FuturePosition = { this->Position.GetX(), this->Position.GetY() + this->MoveDistance };
-					if(this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) == nullptr
-						|| (this->WorldToLive.GetOrganismQueue()->Find(FuturePosition) != nullptr 
-						&& this->WorldToLive.GetOrganismQueue()->Find(FuturePosition)->GetStrength() <= this->Strength))
+					FuturePosition = P3;
+					if(O3 == nullptr || (O3 != nullptr && O3->GetStrength() <= this->Strength))
 						isSet = true;
 				}
 				break;
@@ -99,25 +102,27 @@ int Fox::Act()
 
 bool Fox::GoodNose()
 {
-	if (this->Position.GetX() + 1 < this->WorldToLive.GetWidth() 
-		&& ( this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX() + 1, this->Position.GetY() }) == nullptr
-		|| (this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX() + 1, this->Position.GetY() }) != nullptr
-		&& this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX() + 1, this->Position.GetY() })->GetStrength() <= this->Strength)))
+	Point P1 = { this->Position.GetX() + MoveDistance, this->Position.GetY() };
+	Point P2 = { this->Position.GetX() - MoveDistance, this->Position.GetY() };
+	Point P3 = { this->Position.GetX(), this->Position.GetY() + MoveDistance };
+	Point P4 = { this->Position.GetX(), this->Position.GetY() - MoveDistance };
+
+	Organism* O1 = this->WorldToLive.GetOrganismQueue()->Find(P1);
+	Organism* O2 = this->WorldToLive.GetOrganismQueue()->Find(P2);
+	Organism* O3 = this->WorldToLive.GetOrganismQueue()->Find(P3);
+	Organism* O4 = this->WorldToLive.GetOrganismQueue()->Find(P4);
+
+	if (P1.GetX() < this->WorldToLive.GetWidth() 
+		&& (O1 == nullptr || (O1 != nullptr && O1->GetStrength() <= this->Strength)))
 		return true;
-	else if (this->Position.GetX() - 1 >= 0 
-		&& (this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX() - 1, this->Position.GetY() }) == nullptr
-		|| (this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX() - 1, this->Position.GetY() }) != nullptr
-		&& this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX() - 1, this->Position.GetY() })->GetStrength() <= this->Strength)))
+	else if (P2.GetX() >= 0
+		&& (O2 == nullptr || (O2 != nullptr && O2->GetStrength() <= this->Strength)))
 		return true;
-	else if (this->Position.GetY() + 1 < this->WorldToLive.GetHeight() 
-		&& (this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX(), this->Position.GetY() + 1}) == nullptr
-		|| (this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX(), this->Position.GetY() + 1}) != nullptr
-		&& this->WorldToLive.GetOrganismQueue()->Find({this->Position.GetX(), this->Position.GetY() + 1 })->GetStrength() <= this->Strength)))
+	else if (P3.GetY() < this->WorldToLive.GetHeight()
+		&& (O3 == nullptr || (O3 != nullptr && O3->GetStrength() <= this->Strength)))
 		return true;
-	else if (this->Position.GetY() - 1 >= 0 
-		&& (this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX(), this->Position.GetY() - 1}) == nullptr
-		|| (this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX(), this->Position.GetY() - 1 }) != nullptr
-		&& this->WorldToLive.GetOrganismQueue()->Find({ this->Position.GetX(), this->Position.GetY() - 1 })->GetStrength() <= this->Strength)))
+	else if (P4.GetY() >= 0
+		&& (O4 == nullptr || (O4 != nullptr && O4->GetStrength() <= this->Strength)))
 		return true;
 	return false;
 }

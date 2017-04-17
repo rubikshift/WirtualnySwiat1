@@ -1,7 +1,8 @@
 #include "World.h"
 #include <iostream>
-
 #include <ctime>
+
+#define SHOW_LOGS_OFF
 
 World::World()
 {
@@ -136,7 +137,9 @@ int World::Draw()
 
 	while (!this->Logs.empty())
 	{
-		//std::cout << this->Logs.front() << std::endl;
+#ifdef SHOW_LOGS_ON
+		std::cout << this->Logs.front() << std::endl;
+#endif
 		this->Logs.pop_front();
 	}
 
