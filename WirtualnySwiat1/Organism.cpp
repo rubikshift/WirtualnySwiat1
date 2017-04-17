@@ -1,7 +1,6 @@
 #include "Organism.h"
 #include "MyRandom.h"
 
-
 Organism::Organism(int Strength, int Initative, World& WorldToLive) : WorldToLive(WorldToLive)
 {
 	this->Strength = Strength;
@@ -87,6 +86,12 @@ void Organism::Eat(Organism * SomePlant)
 	this->WorldToLive.AddLog(this->GetSpecies() + " zjada " + SomePlant->GetSpecies());
 	SomePlant->Collide(this);
 	SomePlant->Die();
+}
+
+void Organism::Buff(int BuffValue)
+{
+	this->Strength += BuffValue;
+	this->WorldToLive.AddLog(this->GetSpecies() + " zyskuje wiecej sily, akutalna sila: " + std::to_string(this->Strength));
 }
 
 Point Organism::GetChildPosition()

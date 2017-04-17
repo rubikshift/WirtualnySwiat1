@@ -28,6 +28,7 @@ public:
 	virtual bool DeflectedAttack(Organism* Enemy);
 	virtual bool RunAway(Organism* Enemy);
 	virtual void Eat(Organism* SomePlant);
+	virtual void Buff(int NewStrength);
 	virtual std::string GetSpecies() = 0;
 	
 protected:

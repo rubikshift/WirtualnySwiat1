@@ -55,6 +55,9 @@ int main()
 	auto BarszczSosnowskiego0 = new SosnowskyHogweed(*GameWorld);
 	auto BarszczSosnowskiego1 = new SosnowskyHogweed(*GameWorld);
 	auto BarszczSosnowskiego2 = new SosnowskyHogweed(*GameWorld);
+	auto Guarana0 = new Guarana(*GameWorld);
+	auto Guarana1 = new Guarana(*GameWorld);
+	auto Guarana2 = new Guarana(*GameWorld);
 
 
 	while (true)
