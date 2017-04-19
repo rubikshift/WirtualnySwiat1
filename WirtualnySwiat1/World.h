@@ -33,6 +33,7 @@ private:
 	OrganismQueue* Organisms;
 	int Width, Height, Turn;
 	std::list<std::string> Logs;
+	char ParseWorldField(WorldField Field);
 #ifdef DEBUG
 	int t;
 	std::ofstream out;

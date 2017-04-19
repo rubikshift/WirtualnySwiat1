@@ -1,7 +1,7 @@
 #include "World.h"
 #include <iostream>
 #include <ctime>
-#define SHOW_LOGS_OFF
+#define SHOW_LOGS_ON
 
 World::World()
 {
@@ -80,56 +80,21 @@ int World::Draw()
 	{
 		for (int x = -1; x <= this->Width; x++)
 		{
-			if ((y == -1 || y == this->Height) || (x == -1 || x == this->Width))
-			{
-				std::cout << "#";
-				continue;
-			}
-			switch (Map[x][y])
-			{
-				case EMPTY:
-					std::cout << " ";
-					break;
-				case ANTELOPE:
-					std::cout << "A";
-					break;
-				case BELLADONA:
-					std::cout << "J";
-					break;
-				case CYBER_SHEEP:
-					std::cout << "C";
-					break;
-				case FOX:
-					std::cout << "L";
-					break;
-				case GRASS:
-					std::cout << "T";
-					break;
-				case GUARANA:
-					std::cout << "G";
-					break;
-				case HUMAN:
-					std::cout << "H";
-					break;
-				case SHEEP:
-					std::cout << "O";
-					break;
-				case SOSNOWSKY_HOGWEED:
-					std::cout << "B";
-					break;
-				case SOW_THISTLE:
-					std::cout << "M";
-					break;
-				case TURTLE:
-					std::cout << "Z";
-					break;
-				case WOLF:
-					std::cout << "W";
-					break;
-				default:
-					std::cout << " ";
-					break;
-			}
+			if ((y == -1 || y == this->Height) && (x != -1 && x != this->Width))
+				std::cout << (char)205;
+			else if ((y != -1 && y != this->Height) && (x == -1 || x == this->Width))
+				std::cout << (unsigned char)186;
+			else if (y == -1 && x == -1)
+				std::cout << (unsigned char)201;
+			else if (y == -1 && x == this->Width)
+				std::cout << (unsigned char)187;
+			else if (y == this->Height && x == -1)
+				std::cout << (unsigned char)200;
+			else if (y == this->Height && x == this->Width)
+				std::cout << (unsigned char)188;
+			else
+				std::cout << this->ParseWorldField(Map[x][y]);
+				
 		}
 		std::cout << std::endl;
 	}
@@ -141,7 +106,6 @@ int World::Draw()
 #endif
 		this->Logs.pop_front();
 	}
-
 	return 0;
 }
 
@@ -193,4 +157,37 @@ void World::AddLog(std::string Log)
 	auto ptm = gmtime(&rawTime);
 	out << "Tura: " << this->Turn << ", "<< (ptm->tm_hour+2)%24 << ":" << ptm->tm_min << ":" << ptm->tm_sec << ", " << Log << std::endl;
 #endif // DEBUG
+}
+
+char World::ParseWorldField(WorldField Field)
+{
+	switch (Field)
+	{
+	case ANTELOPE:
+		return 'A';
+	case BELLADONA:
+		return 'J';
+	case CYBER_SHEEP:
+		return 'C';
+	case FOX:
+		return 'L';
+	case GRASS:
+		return 'T';
+	case GUARANA:
+		return 'G';
+	case HUMAN:
+		return 'H';
+	case SHEEP:
+		return 'O';
+	case SOSNOWSKY_HOGWEED:
+		return 'B';
+	case SOW_THISTLE:
+		return 'M';
+	case TURTLE:
+		return 'Z';
+	case WOLF:
+		return 'W';
+	default:
+		return ' ';
+	}
 }

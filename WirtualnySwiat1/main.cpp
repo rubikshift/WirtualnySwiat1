@@ -20,6 +20,12 @@
 #include "World.h"
 #include "WorldField.h"
 #include <Windows.h>
+#include <conio.h>
+
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
 
 int main()
 {
@@ -59,14 +65,43 @@ int main()
 	auto Guarana1 = new Guarana(*GameWorld);
 	auto Guarana2 = new Guarana(*GameWorld);
 	auto Czlowiek = new Human(*GameWorld);
-
+	Direction PlayerMoveDirection;
+	unsigned char c;
+	bool ok = false;
 	while (!Czlowiek->IsDead())
 	{
 		system("cls");
-		std::cout << "Michal Krakowiak, 165596, " << Czlowiek->GetStrength() << std::endl;
+		std::cout << "Michal Krakowiak, 165596" << std::endl;
+		std::cout << "Strzalki - poruszanie, s - zapisz, l - wczytaj, q - super moc" << std::endl;
+		std::cout << "Aktualna sila czlowieka: " << Czlowiek->GetStrength() << std::endl;
 		GameWorld->Draw();
-		GameWorld->MakeTurn();
+		do
+		{
+			c = getch();
+			if (c == 224 || c == 0)
+			{
+				c = getch();
+				switch (c)
+				{
+					case KEY_UP:
+						PlayerMoveDirection = UP; break;
+					case KEY_LEFT:
+						PlayerMoveDirection = LEFT; break;
+					case KEY_RIGHT:
+						PlayerMoveDirection = RIGHT; break;
+					case KEY_DOWN:
+						PlayerMoveDirection = DOWN; break;
+					default:
+						PlayerMoveDirection = NONE;
+				}
+				ok = Czlowiek->Control(PlayerMoveDirection);
+			}
+		} while (!ok);
+		ok = false;
+		GameWorld->MakeTurn();		
 	}
+	std::cout << "Gracz nie zyje, koniec gry :(" << std::endl;
+	getch();
 	GameWorld->AddLog("Gracz nie zyje, koniec gry :(");
 	return 0;
 }
