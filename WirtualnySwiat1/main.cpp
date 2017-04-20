@@ -125,8 +125,8 @@ int main()
 		GameWorld->MakeTurn();		
 	}
 	std::cout << "Gracz nie zyje, koniec gry :(" << std::endl;
-	system("pause");
 	GameWorld->AddLog("Gracz nie zyje, koniec gry :(");
+	system("pause");
 	delete GameWorld;
 	return 0;
 }
