@@ -1,8 +1,7 @@
 #include "World.h"
 #include <iostream>
 #include <ctime>
-#define SHOW_LOGS_ON
-
+#define SHOW_LOGS_OFF
 World::World()
 {
 }

@@ -23,7 +23,7 @@ int Human::Draw()
 int Human::Act()
 {
 	auto AnotherOrganism = this->WorldToLive.GetOrganismQueue()->Find(FuturePosition);
-	if (AnotherOrganism != nullptr)
+	if (AnotherOrganism != nullptr && AnotherOrganism != this)
 	{
 		this->Collide(AnotherOrganism);
 		if (AnotherOrganism->IsDead())
@@ -38,8 +38,9 @@ int Human::Act()
 		SuperPowerTurnsLeft--;
 		this->Strength--;
 	}
-	if (SuperPowerTurnsLeft == 0)
+	if (SuperPowerActive && SuperPowerTurnsLeft == 0)
 	{
+		this->WorldToLive.AddLog("Moc specjalna (" + this->GetSpecies() + ") " + "przestala dzialac");
 		SuperPowerActive = false;
 		SuperPowerOverload = 5;
 	}
@@ -96,9 +97,12 @@ bool Human::SuperPower()
 		return false;
 	else
 	{
+		this->WorldToLive.AddLog(this->GetSpecies() + " uzywa mocy specjalniej");
+		this->FuturePosition = Position;
 		SuperPowerActive = true;
 		this->Strength += 5;
 		SuperPowerTurnsLeft = 5;
+		return true;
 	}
 }
 

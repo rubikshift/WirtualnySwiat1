@@ -76,6 +76,7 @@ int main()
 		std::cout << "Michal Krakowiak, 165596" << std::endl;
 		std::cout << "Strzalki - poruszanie, s - zapisz, l - wczytaj, q - super moc" << std::endl;
 		std::cout << "Aktualna sila czlowieka: " << Czlowiek->GetStrength() << std::endl;
+		std::cout << "Tur do ponownego uzycia spuermocy: " << Czlowiek->GetSuperPowerOverload() << ", pozostalo tur: " << Czlowiek->GetSuperPowerTurnsLeft() << std::endl;
 		GameWorld->Draw();
 		do
 		{
@@ -85,18 +86,32 @@ int main()
 				c = getch();
 				switch (c)
 				{
-					case KEY_UP:
-						PlayerMoveDirection = UP; break;
-					case KEY_LEFT:
-						PlayerMoveDirection = LEFT; break;
-					case KEY_RIGHT:
-						PlayerMoveDirection = RIGHT; break;
-					case KEY_DOWN:
-						PlayerMoveDirection = DOWN; break;
-					default:
-						PlayerMoveDirection = NONE;
+				case KEY_UP:
+					PlayerMoveDirection = UP; break;
+				case KEY_LEFT:
+					PlayerMoveDirection = LEFT; break;
+				case KEY_RIGHT:
+					PlayerMoveDirection = RIGHT; break;
+				case KEY_DOWN:
+					PlayerMoveDirection = DOWN; break;
+				default:
+					PlayerMoveDirection = NONE;
 				}
 				ok = Czlowiek->Control(PlayerMoveDirection);
+			}
+			switch (c)
+			{
+				case 'q':
+				case 'Q':
+					ok = Czlowiek->SuperPower(); break;
+				case 's':
+				case 'S':
+					break;
+				case 'l':
+				case 'L':
+					break;
+				default:
+					break;
 			}
 		} while (!ok);
 		ok = false;
