@@ -26,6 +26,7 @@
 #define KEY_DOWN 80
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
+#define ESC 27
 
 int main()
 {
@@ -110,6 +111,11 @@ int main()
 				case 'l':
 				case 'L':
 					break;
+				case ESC:
+					std::cout << "Gracz zakonczyl gre" << std::endl;
+					GameWorld->AddLog("Gracz zakonczyl gre");
+					system("pause");
+					return 0;
 				default:
 					break;
 			}
@@ -118,7 +124,7 @@ int main()
 		GameWorld->MakeTurn();		
 	}
 	std::cout << "Gracz nie zyje, koniec gry :(" << std::endl;
-	getch();
+	system("pause");
 	GameWorld->AddLog("Gracz nie zyje, koniec gry :(");
 	return 0;
 }
