@@ -25,8 +25,8 @@ World::World(int Width, int Height)
 World::~World()
 {
 	for (int i = 0; i < Width; i++)
-		delete Map[i];
-	delete Map;
+		delete[] Map[i];
+	delete[] Map;
 	delete Organisms;
 #ifdef DEBUG
 	out.close();

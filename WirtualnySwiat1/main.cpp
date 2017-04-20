@@ -115,6 +115,7 @@ int main()
 					std::cout << "Gracz zakonczyl gre" << std::endl;
 					GameWorld->AddLog("Gracz zakonczyl gre");
 					system("pause");
+					delete GameWorld;
 					return 0;
 				default:
 					break;
@@ -126,5 +127,6 @@ int main()
 	std::cout << "Gracz nie zyje, koniec gry :(" << std::endl;
 	system("pause");
 	GameWorld->AddLog("Gracz nie zyje, koniec gry :(");
+	delete GameWorld;
 	return 0;
 }
