@@ -5,23 +5,24 @@
 Antelope::Antelope(World& WorldToLive) : Animal(4, 4, WorldToLive)
 {
 	this->MoveDistance = 2;
+	Type = ANTELOPE;
+}
+
+Antelope::Antelope(World & WorldToLive, std::fstream & in) : Animal(4, WorldToLive, in)
+{
+	this->MoveDistance = 2;
+	Type = ANTELOPE;
 }
 
 Antelope::Antelope(World& WorldToLive, Point P) : Animal(4, 4, WorldToLive, P)
 {
 	this->MoveDistance = 2;
+	Type = ANTELOPE;
 }
 
 
 Antelope::~Antelope()
 {
-}
-
-int Antelope::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = ANTELOPE;
-	return 0;
 }
 
 int Antelope::Collide(Organism * AnotherOrganism)

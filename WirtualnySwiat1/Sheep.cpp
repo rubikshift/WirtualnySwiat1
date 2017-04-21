@@ -4,22 +4,22 @@
 
 Sheep::Sheep(World& WorldToLive) : Animal(4, 4, WorldToLive)
 {
+	Type = SHEEP;
+}
+
+Sheep::Sheep(World & WorldToLive, std::fstream & in) : Animal(4, WorldToLive, in)
+{
+	Type = SHEEP;
 }
 
 Sheep::Sheep(World & WorldToLive, Point P) :  Animal(4, 4, WorldToLive, P)
 {
+	Type = SHEEP;
 }
 
 
 Sheep::~Sheep()
 {
-}
-
-int Sheep::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = SHEEP;
-	return 0;
 }
 
 int Sheep::Collide(Organism * AnotherOrganism)

@@ -4,22 +4,22 @@
 
 Turtle::Turtle(World& WorldToLive) : Animal(2, 1, WorldToLive)
 {
+	Type = TURTLE;
+}
+
+Turtle::Turtle(World & WorldToLive, std::fstream & in) : Animal(1, WorldToLive, in)
+{
+	Type = TURTLE;
 }
 
 Turtle::Turtle(World & WorldToLive, Point P) : Animal(2, 1, WorldToLive, P)
 {
+	Type = TURTLE;
 }
 
 
 Turtle::~Turtle()
 {
-}
-
-int Turtle::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = TURTLE;
-	return 0;
 }
 
 bool Turtle::DeflectedAttack(Organism * Enemy)

@@ -5,9 +5,9 @@ class Turtle :
 {
 public:
 	Turtle(World& WorldToLive);
+	Turtle(World& WorldToLive, std::fstream& in);
 	Turtle(World& WorldToLive, Point P);
 	virtual ~Turtle();
-	int Draw() override;
 	bool DeflectedAttack(Organism* Enemy) override;
 	int Act() override;
 	int Collide(Organism* AnotherOrganism) override;

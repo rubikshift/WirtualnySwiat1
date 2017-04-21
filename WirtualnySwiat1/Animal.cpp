@@ -8,6 +8,11 @@ Animal::Animal(int Strength, int Initative, World& WorldToLive) : Organism(Stren
 	this->MoveDistance = 1;
 }
 
+Animal::Animal(int Initative, World & WorldToLive, std::fstream & in) : Organism(Initative, WorldToLive, in)
+{
+	this->MoveDistance = 1;
+}
+
 Animal::Animal(int Strength, int Initative, World & WorldToLive, Point P) : Organism(Strength, Initative, WorldToLive, P)
 {
 	this->MoveDistance = 1;

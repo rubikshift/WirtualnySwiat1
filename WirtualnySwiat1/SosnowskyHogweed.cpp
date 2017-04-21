@@ -6,23 +6,24 @@
 SosnowskyHogweed::SosnowskyHogweed(World& WorldToLive) : Plant(10, WorldToLive)
 {
 	this->ReproduceProbability = SOSNOWSKY_HOGWEED_PROBABILTY;
+	Type = SOSNOWSKY_HOGWEED;
+}
+
+SosnowskyHogweed::SosnowskyHogweed(World & WorldToLive, std::fstream & in) : Plant(WorldToLive, in)
+{
+	this->ReproduceProbability = SOSNOWSKY_HOGWEED_PROBABILTY;
+	Type = SOSNOWSKY_HOGWEED;
 }
 
 SosnowskyHogweed::SosnowskyHogweed(World& WorldToLive, Point P) : Plant(10, WorldToLive, P)
 {
 	this->ReproduceProbability = SOSNOWSKY_HOGWEED_PROBABILTY;
+	Type = SOSNOWSKY_HOGWEED;
 }
 
 
 SosnowskyHogweed::~SosnowskyHogweed()
 {
-}
-
-int SosnowskyHogweed::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = SOSNOWSKY_HOGWEED;
-	return 0;
 }
 
 int SosnowskyHogweed::Act()

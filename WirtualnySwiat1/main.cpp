@@ -71,6 +71,7 @@ int main()
 	Direction PlayerMoveDirection;
 	unsigned char c;
 	bool ok = false;
+	bool reload = false;
 	while (!Czlowiek->IsDead())
 	{
 		system("cls");
@@ -107,9 +108,13 @@ int main()
 					ok = Czlowiek->SuperPower(); break;
 				case 's':
 				case 'S':
+					GameWorld->Save();
 					break;
 				case 'l':
 				case 'L':
+					Czlowiek = dynamic_cast<Human*>(GameWorld->Load());
+					ok = true;
+					reload = true;
 					break;
 				case ESC:
 					std::cout << "Gracz zakonczyl gre" << std::endl;
@@ -122,6 +127,11 @@ int main()
 			}
 		} while (!ok);
 		ok = false;
+		if (reload)
+		{
+			reload = false;
+			continue;
+		}
 		GameWorld->MakeTurn();		
 	}
 	std::cout << "Gracz nie zyje, koniec gry :(" << std::endl;

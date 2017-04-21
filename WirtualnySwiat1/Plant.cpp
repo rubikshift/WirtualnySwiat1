@@ -8,6 +8,11 @@ Plant::Plant(int Strength, World& WorldToLive) : Organism(Strength, 0, WorldToLi
 	this->ReproduceProbability = DEFAULT_PLANT_PROBABILTY;
 }
 
+Plant::Plant(World & WorldToLive, std::fstream & in) : Organism(0, WorldToLive, in)
+{
+	this->ReproduceProbability = DEFAULT_PLANT_PROBABILTY;
+}
+
 Plant::Plant(int Strength, World& WorldToLive, Point P) : Organism(Strength, 0, WorldToLive, P)
 {
 	this->ReproduceProbability = DEFAULT_PLANT_PROBABILTY;

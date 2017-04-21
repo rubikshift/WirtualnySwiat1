@@ -27,6 +27,8 @@ public:
 	OrganismQueue* GetOrganismQueue();
 	bool IsEmptyNear(Point P);
 	void AddLog(std::string Log);
+	void Save();
+	Organism* Load();
 
 private:
 	WorldField** Map;

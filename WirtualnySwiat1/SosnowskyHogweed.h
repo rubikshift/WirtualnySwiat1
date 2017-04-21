@@ -5,9 +5,9 @@ class SosnowskyHogweed :
 {
 public:
 	SosnowskyHogweed(World& WorldToLive);
+	SosnowskyHogweed(World& WorldToLive, std::fstream& in);
 	SosnowskyHogweed(World& WorldToLive, Point P);
 	virtual ~SosnowskyHogweed();
-	int Draw() override;
 	int Act() override;
 	void Reproduce() override;
 	int Collide(Organism* AnotherOrganism) override;

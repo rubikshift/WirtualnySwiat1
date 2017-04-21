@@ -4,22 +4,22 @@
 
 SowThistle::SowThistle(World& WorldToLive) : Plant(0, WorldToLive)
 {
+	Type = SOW_THISTLE;
+}
+
+SowThistle::SowThistle(World & WorldToLive, std::fstream & in) : Plant(WorldToLive, in)
+{
+	Type = SOW_THISTLE;
 }
 
 SowThistle::SowThistle(World& WorldToLive, Point P) : Plant(0, WorldToLive, P)
 {
+	Type = SOW_THISTLE;
 }
 
 
 SowThistle::~SowThistle()
 {
-}
-
-int SowThistle::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = SOW_THISTLE;
-	return 0;
 }
 
 void SowThistle::Reproduce()

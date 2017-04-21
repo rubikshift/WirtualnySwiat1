@@ -1,4 +1,16 @@
 #include "World.h"
+#include "Antelope.h"
+#include "Belladona.h"
+#include "CyberSheep.h"
+#include "Fox.h"
+#include "Grass.h"
+#include "Guarana.h"
+#include "Human.h"
+#include "Sheep.h"
+#include "SosnowskyHogweed.h"
+#include "SowThistle.h"
+#include "Turtle.h"
+#include "Wolf.h"
 #include <iostream>
 #include <ctime>
 #define SHOW_LOGS_OFF
@@ -156,6 +168,67 @@ void World::AddLog(std::string Log)
 	auto ptm = gmtime(&rawTime);
 	out << "Tura: " << this->Turn << ", "<< (ptm->tm_hour+2)%24 << ":" << ptm->tm_min << ":" << ptm->tm_sec << ", " << Log << std::endl;
 #endif // DEBUG
+}
+
+void World::Save()
+{
+	std::fstream sav("Zapis.txt", std::ofstream::out);
+	sav << this->Width << " " << this->Height << " " << this->Turn << " " << this->Organisms->GetCount() <<std::endl;
+	for (int i = 0; i < this->Organisms->GetCount(); i++)
+		if ((*Organisms)[i] != nullptr && !(*Organisms)[i]->IsDead())
+			(*Organisms)[i]->Save(sav);
+	sav.close();
+}
+
+Organism* World::Load()
+{
+	/*delete Organisms;
+	for (int i = 0; i < Width; i++)
+		delete[] Map[i];
+	delete[] Map;*/
+	int Species, count;
+	Organism* tmp;
+	Organism* czlowiek;
+	std::fstream sav("Zapis.txt", std::ifstream::in);
+	sav >> this->Width >> this->Height >> this->Turn >> count;
+	this->Map = new WorldField*[Width];
+	for (int i = 0; i < Width; i++)
+		this->Map[i] = new WorldField[Height];
+	this->Organisms = new OrganismQueue(Width, Height);
+	for(int i =0; i < count; i++)
+	{
+		sav >> Species;
+		switch ((WorldField)Species)
+		{
+			case ANTELOPE: 
+				tmp = new Antelope(*this, sav); break;
+			case BELLADONA: 
+				tmp = new Belladona(*this, sav); break;
+			/*case CYBER_SHEEP: 
+				tmp = new CyberSheep(*this, sav); break;*/
+			case FOX:
+				tmp = new Fox(*this, sav); break;
+			case GRASS:
+				tmp = new Grass(*this, sav); break;
+			case GUARANA:
+				tmp = new Guarana(*this, sav); break;
+			case HUMAN:
+				czlowiek = new Human(*this, sav); break;
+			case SHEEP:
+				tmp = new Sheep(*this, sav); break;
+			case SOSNOWSKY_HOGWEED:
+				tmp = new SosnowskyHogweed(*this, sav); break;
+			case SOW_THISTLE:
+				tmp = new SowThistle(*this, sav); break;
+			case TURTLE:
+				tmp = new Turtle(*this, sav); break;
+			case WOLF:
+				tmp = new Wolf(*this, sav); break;
+		}
+		
+	}
+	sav.close();
+	return czlowiek;
 }
 
 char World::ParseWorldField(WorldField Field)

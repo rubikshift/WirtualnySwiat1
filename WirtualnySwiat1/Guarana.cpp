@@ -4,22 +4,22 @@
 
 Guarana::Guarana(World& WorldToLive) : Plant(0, WorldToLive)
 {
+	Type = GUARANA;
+}
+
+Guarana::Guarana(World & WorldToLive, std::fstream & in) : Plant(WorldToLive, in)
+{
+	Type = GUARANA;
 }
 
 Guarana::Guarana(World& WorldToLive, Point P) : Plant(0, WorldToLive, P)
 {
+	Type = GUARANA;
 }
 
 
 Guarana::~Guarana()
 {
-}
-
-int Guarana::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = GUARANA;
-	return 0;
 }
 
 void Guarana::Reproduce()

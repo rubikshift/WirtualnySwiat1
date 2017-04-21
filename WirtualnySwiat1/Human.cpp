@@ -7,17 +7,17 @@ Human::Human(World& WorldToLive) : Animal(5, 4, WorldToLive)
 	SuperPowerOverload = 0;
 	SuperPowerActive = false;
 	SuperPowerTurnsLeft = 0;
+	Type = HUMAN;
+}
+
+Human::Human(World & WorldToLive, std::fstream & in) : Animal(4, WorldToLive, in)
+{
+	in >> SuperPowerActive >> SuperPowerOverload >> SuperPowerTurnsLeft;
+	Type = HUMAN;
 }
 
 Human::~Human()
 {
-}
-
-int Human::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = HUMAN;
-	return 0;
 }
 
 int Human::Act()
@@ -119,4 +119,10 @@ int Human::GetSuperPowerTurnsLeft() const
 bool Human::IsSuperPowerActive() const
 {
 	return this->SuperPowerActive;
+}
+
+void Human::Save(std::fstream & out)
+{
+	out << (int)Type << " " << Strength << " " << Position.GetX() << " " << Position.GetY() << " " << Age;
+	out << " " << SuperPowerActive << " " << SuperPowerOverload << " " << SuperPowerTurnsLeft << std::endl;
 }

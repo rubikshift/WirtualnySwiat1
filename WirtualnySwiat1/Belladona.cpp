@@ -5,23 +5,24 @@
 Belladona::Belladona(World& WorldToLive) : Plant(9, WorldToLive)
 {
 	this->ReproduceProbability = BELLADONA_PROBABILTY;
+	Type = BELLADONA;
+}
+
+Belladona::Belladona(World & WorldToLive, std::fstream & in) : Plant(WorldToLive, in)
+{
+	this->ReproduceProbability = BELLADONA_PROBABILTY;
+	Type = BELLADONA;
 }
 
 Belladona::Belladona(World& WorldToLive, Point P) : Plant(9, WorldToLive, P)
 {
 	this->ReproduceProbability = BELLADONA_PROBABILTY;
+	Type = BELLADONA;
 }
 
 
 Belladona::~Belladona()
 {
-}
-
-int Belladona::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = BELLADONA;
-	return 0;
 }
 
 void Belladona::Reproduce()

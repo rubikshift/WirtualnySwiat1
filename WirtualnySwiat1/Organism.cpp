@@ -21,6 +21,18 @@ Organism::Organism(int Strength, int Initative, World& WorldToLive) : WorldToLiv
 	
 }
 
+Organism::Organism(int Initative, World & WorldToLive, std::fstream & in) : WorldToLive(WorldToLive)
+{
+	this->Initative = Initative;
+	in >> Strength;
+	int x, y;
+	in >> x >> y >> Age;
+	Position = { x, y };
+	isDead = false;
+	isTurnAllowed = false;
+	this->WorldToLive.AddOrganismToWorld(this);
+}
+
 Organism::Organism(int Strength, int Initative, World & WorldToLive, Point P) : WorldToLive(WorldToLive)
 {
 	this->Strength = Strength;
@@ -35,6 +47,13 @@ Organism::Organism(int Strength, int Initative, World & WorldToLive, Point P) : 
 
 Organism::~Organism()
 {
+}
+
+int Organism::Draw()
+{
+	auto Map = this->WorldToLive.GetMap();
+	Map[this->Position.GetX()][this->Position.GetY()] = this->Type;
+	return 0;
 }
 
 int Organism::GetStrength() const
@@ -92,6 +111,11 @@ void Organism::Buff(int BuffValue)
 {
 	this->Strength += BuffValue;
 	this->WorldToLive.AddLog(this->GetSpecies() + " zyskuje wiecej sily, akutalna sila: " + std::to_string(this->Strength));
+}
+
+void Organism::Save(std::fstream& out)
+{
+	out << (int)Type << " " << Strength << " " << Position.GetX() << " " << Position.GetY() << " " << Age << std::endl;
 }
 
 Point Organism::GetChildPosition()

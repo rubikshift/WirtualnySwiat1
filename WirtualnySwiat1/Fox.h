@@ -5,9 +5,9 @@ class Fox :
 {
 public:
 	Fox(World& WorldToLive);
+	Fox(World& WorldToLive, std::fstream& in);
 	Fox(World& WorldToLive, Point P);
 	virtual ~Fox();
-	int Draw() override;
 	int Act() override;
 	void Reproduce() override;
 	int Collide(Organism * AnotherOrganism) override;

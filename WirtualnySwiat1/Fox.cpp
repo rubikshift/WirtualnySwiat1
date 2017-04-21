@@ -5,22 +5,22 @@
 
 Fox::Fox(World& WorldToLive) : Animal(3, 7, WorldToLive)
 {
+	Type = FOX;
+}
+
+Fox::Fox(World & WorldToLive, std::fstream & in) : Animal(7, WorldToLive, in)
+{
+	Type = FOX;
 }
 
 Fox::Fox(World& WorldToLive, Point P) : Animal(3, 7, WorldToLive, P)
 {
+	Type = FOX;
 }
 
 
 Fox::~Fox()
 {
-}
-
-int Fox::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = FOX;
-	return 0;
 }
 
 int Fox::Act()

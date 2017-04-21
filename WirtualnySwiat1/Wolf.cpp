@@ -4,22 +4,22 @@
 
 Wolf::Wolf(World& WorldToLive) : Animal(9, 5, WorldToLive)
 {
+	Type = WOLF;
+}
+
+Wolf::Wolf(World & WorldToLive, std::fstream & in) : Animal(5, WorldToLive, in)
+{
+	Type = WOLF;
 }
 
 Wolf::Wolf(World & WorldToLive, Point P) : Animal(9, 5, WorldToLive, P)
 {
+	Type = WOLF;
 }
 
 
 Wolf::~Wolf()
 {
-}
-
-int Wolf::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = WOLF;
-	return 0;
 }
 
 int Wolf::Collide(Organism * AnotherOrganism)

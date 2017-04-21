@@ -4,10 +4,17 @@
 
 Grass::Grass(World& WorldToLive) : Plant(0, WorldToLive)
 {
+	Type = GRASS;
+}
+
+Grass::Grass(World & WorldToLive, std::fstream & in) : Plant(WorldToLive, in)
+{
+	Type = GRASS;
 }
 
 Grass::Grass(World& WorldToLive, Point P) : Plant(0, WorldToLive, P)
 {
+	Type = GRASS;
 }
 
 
@@ -21,13 +28,6 @@ int Grass::Act()
 		return 0;
 	for (int i = 0; i < 3; i++)
 		Plant::Act();
-	return 0;
-}
-
-int Grass::Draw()
-{
-	auto Map = this->WorldToLive.GetMap();
-	Map[this->Position.GetX()][this->Position.GetY()] = GRASS;
 	return 0;
 }
 
