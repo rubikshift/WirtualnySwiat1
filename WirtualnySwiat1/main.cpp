@@ -105,7 +105,7 @@ int main()
 			{
 				case 'q':
 				case 'Q':
-					ok = Czlowiek->SuperPower(); break;
+					ok = Czlowiek->SuperPower(); reload = true; break;
 				case 's':
 				case 'S':
 					GameWorld->Save();
