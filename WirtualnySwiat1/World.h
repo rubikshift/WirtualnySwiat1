@@ -6,7 +6,7 @@
 #include "OrganismQueue.h"
 #include "Point.h"
 
-#define DEBUG
+//#define DEBUG
 
 class Organism;
 class OrganismQueue;

@@ -74,7 +74,8 @@ int OrganismQueue::GetDeadCount()
 int OrganismQueue::FindDead()
 {
 	for (int i = 0; i < Size; i++)
-		if (Organisms[i] != nullptr && Organisms[i]->IsDead())
+		if (Organisms[i] != nullptr && Organisms[i]->IsDead() && dynamic_cast<Human*>(Organisms[i]) == nullptr) 
+			// ostatni warunek moze byc niejasny, jezeli zginie czlowiek nie chce, zeby jego wskaznik zostal nadpisany, smierc czlowieka i tak konczy gre
 			return i;
 	return -1;
 }
