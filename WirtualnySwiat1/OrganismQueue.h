@@ -13,11 +13,12 @@ public:
 	void Add(Organism* LivingOrganism);
 	Organism* operator[](int i);
 	void Sort();
-	int FindDead();
+	int GetDeadCount();
 	Organism* Find(Point P);
 	int GetCount() const;
 
 private:
+	int FindDead();
 	Organism** Organisms;
 	int Size;
 	int Count;

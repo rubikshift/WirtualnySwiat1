@@ -4,7 +4,7 @@
 
 Human::Human(World& WorldToLive) : Animal(5, 4, WorldToLive)
 {
-	SuperPowerOverload = 0;
+	SuperPowerCoolDown = 0;
 	SuperPowerActive = false;
 	SuperPowerTurnsLeft = 0;
 	Type = HUMAN;
@@ -12,7 +12,7 @@ Human::Human(World& WorldToLive) : Animal(5, 4, WorldToLive)
 
 Human::Human(World & WorldToLive, std::fstream & in) : Animal(4, WorldToLive, in)
 {
-	in >> SuperPowerActive >> SuperPowerOverload >> SuperPowerTurnsLeft;
+	in >> SuperPowerActive >> SuperPowerCoolDown >> SuperPowerTurnsLeft;
 	Type = HUMAN;
 }
 
@@ -31,8 +31,8 @@ int Human::Act()
 	}
 	else
 		this->Position = FuturePosition;
-	if (!SuperPowerActive && SuperPowerOverload > 0)
-		SuperPowerOverload--;
+	if (!SuperPowerActive && SuperPowerCoolDown > 0)
+		SuperPowerCoolDown--;
 	else if (SuperPowerActive)
 	{
 		SuperPowerTurnsLeft--;
@@ -42,7 +42,7 @@ int Human::Act()
 	{
 		this->WorldToLive.AddLog("Moc specjalna (" + this->GetSpecies() + ") " + "przestala dzialac");
 		SuperPowerActive = false;
-		SuperPowerOverload = 5;
+		SuperPowerCoolDown = 5;
 	}
 	return 0;
 }
@@ -93,7 +93,7 @@ bool Human::Control(Direction Dir)
 
 bool Human::SuperPower()
 {
-	if (SuperPowerActive || (!SuperPowerActive && SuperPowerOverload > 0))
+	if (SuperPowerActive || (!SuperPowerActive && SuperPowerCoolDown > 0))
 		return false;
 	else
 	{
@@ -106,9 +106,9 @@ bool Human::SuperPower()
 	}
 }
 
-int Human::GetSuperPowerOverload() const
+int Human::GetSuperPowerCoolDown() const
 {
-	return this->SuperPowerOverload;
+	return this->SuperPowerCoolDown;
 }
 
 int Human::GetSuperPowerTurnsLeft() const
@@ -124,5 +124,5 @@ bool Human::IsSuperPowerActive() const
 void Human::Save(std::fstream & out)
 {
 	out << (int)Type << " " << Strength << " " << Position.GetX() << " " << Position.GetY() << " " << Age;
-	out << " " << SuperPowerActive << " " << SuperPowerOverload << " " << SuperPowerTurnsLeft << std::endl;
+	out << " " << SuperPowerActive << " " << SuperPowerCoolDown << " " << SuperPowerTurnsLeft << std::endl;
 }

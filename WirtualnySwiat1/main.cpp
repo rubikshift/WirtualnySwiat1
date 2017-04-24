@@ -30,7 +30,13 @@
 
 int main()
 {
-	auto GameWorld = new World(52, 23);
+	int x, y;
+	std::cout << "Minimalny rozmiar swiata gry powinien wynosic 34 pola (np. 1x34)" << std::endl;
+	std::cout << "Podaj wysokosc swiata gry: ";
+	std::cin >> y;
+	std::cout << "Podaj szerokosc swiata gry: ";
+	std::cin >> x;
+	auto GameWorld = new World(x, y);
 	{
 		auto Owca0 = new Sheep(*GameWorld);
 		auto Owca1 = new Sheep(*GameWorld);
@@ -76,9 +82,9 @@ int main()
 	{
 		system("cls");
 		std::cout << "Michal Krakowiak, 165596" << std::endl;
-		std::cout << "Strzalki - poruszanie, s - zapisz, l - wczytaj, q - super moc" << std::endl;
+		std::cout << "Strzalki - poruszanie, s - zapisz, l - wczytaj, q - super moc (magiczny eliksir)" << std::endl;
 		std::cout << "Aktualna sila czlowieka: " << Czlowiek->GetStrength() << std::endl;
-		std::cout << "Tur do ponownego uzycia spuermocy: " << Czlowiek->GetSuperPowerOverload() << ", pozostalo tur: " << Czlowiek->GetSuperPowerTurnsLeft() << std::endl;
+		std::cout << "Tur do ponownego uzycia spuermocy: " << Czlowiek->GetSuperPowerCoolDown() << ", pozostalo tur: " << Czlowiek->GetSuperPowerTurnsLeft() << std::endl;
 		GameWorld->Draw();
 		do
 		{

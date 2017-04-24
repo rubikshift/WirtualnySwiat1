@@ -27,7 +27,7 @@ void OrganismQueue::Add(Organism * LivingOrganism)
 		delete this->Organisms[i];
 		this->Organisms[i] = LivingOrganism;
 	}
-	else
+	else if(Count < Size)
 	{
 		this->Organisms[Count] = LivingOrganism;
 		Count++;
@@ -62,10 +62,19 @@ void OrganismQueue::Sort()
 		}
 }
 
+int OrganismQueue::GetDeadCount()
+{
+	int counter = 0;
+	for(int i = 0; i < Count; i++)
+		if (Organisms[i] != nullptr && Organisms[i]->IsDead())
+			counter++;
+	return counter;
+}
+
 int OrganismQueue::FindDead()
 {
 	for (int i = 0; i < Size; i++)
-		if (Organisms[i] != nullptr && Organisms[i]->IsDead() && dynamic_cast<Human*>(Organisms[i]) == nullptr)
+		if (Organisms[i] != nullptr && Organisms[i]->IsDead())
 			return i;
 	return -1;
 }

@@ -13,7 +13,7 @@
 #include "Wolf.h"
 #include <iostream>
 #include <ctime>
-#define SHOW_LOGS_OFF
+#define SHOW_LOGS_ON
 World::World()
 {
 }
@@ -173,7 +173,7 @@ void World::AddLog(std::string Log)
 void World::Save()
 {
 	std::fstream sav("Zapis.txt", std::ofstream::out);
-	sav << this->Width << " " << this->Height << " " << this->Turn << " " << this->Organisms->GetCount() <<std::endl;
+	sav << this->Width << " " << this->Height << " " << this->Turn << " " << this->Organisms->GetCount() - this->Organisms->GetDeadCount() <<std::endl;
 	for (int i = 0; i < this->Organisms->GetCount(); i++)
 		if ((*Organisms)[i] != nullptr && !(*Organisms)[i]->IsDead())
 			(*Organisms)[i]->Save(sav);
@@ -182,10 +182,10 @@ void World::Save()
 
 Organism* World::Load()
 {
-	/*delete Organisms;
+	delete Organisms;
 	for (int i = 0; i < Width; i++)
 		delete[] Map[i];
-	delete[] Map;*/
+	delete[] Map;
 	int Species, count;
 	Organism* tmp;
 	Organism* czlowiek;

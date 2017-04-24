@@ -14,13 +14,13 @@ public:
 	std::string GetSpecies() override;
 	bool Control(Direction Dir);
 	bool SuperPower();
-	int GetSuperPowerOverload() const;
+	int GetSuperPowerCoolDown() const;
 	int GetSuperPowerTurnsLeft() const;
 	bool IsSuperPowerActive() const;
 	void Save(std::fstream& out) override;
 private:
 	Point FuturePosition;
-	int SuperPowerOverload;
+	int SuperPowerCoolDown;
 	int SuperPowerTurnsLeft;
 	bool SuperPowerActive;
 };
